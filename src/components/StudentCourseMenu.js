@@ -26,7 +26,7 @@ const StudentCourseMenu = () => {
                             <input type="button" value="COURSE 1"></input>
                             <input type="button" value="COURSE 1"></input>
                         </div>
-                        <table>
+                        <table className="navigation-table">
                             <tr>
                                 <td>
                                     <input className="home-button" type={"button"} value="HOME"></input>

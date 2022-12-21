@@ -1,327 +1,307 @@
 body {
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(to right, #c33764, #1d2671);
-  font-family: 'montserrat', sans-serif;
-  overflow-y: scroll;
-}
-
-.login-form {
-  margin: auto;
-  margin-top: 150px;
-  background: white;
-  width: 400px;
-  border-radius: 10px;
-}
-
-.login-form h1 {
-  text-align: center;
-  padding: 20px 0 20px 0;
-  border-bottom: 1px solid silver;
-}
-
-.login-form form {
-  padding: 0 40px;
-  box-sizing: border-box;
-}
-
-.login-form input {
-  width: 100%;
-  height: 40px;
-  margin-bottom: 20px;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: 1px solid silver;
-  background: none;
-  outline: none;
-  transition: 0.1s;
-}
-
-.login-form input:focus{
-  border-bottom: 2px solid #2691d9;
-}
-
-.login-form input[type="submit"]{
-  width: 100%;
-  height: 50px;
-  border: 1px solid;
-  background: #2691d9;
-  border-radius: 25px;
-  font-size: 18px;
-  color: #e9f4fb;
-  font-weight: 700;
-  cursor: pointer;
-  outline: none;
-  margin-bottom: 20px;
-  margin-top: 20px;
-  transition: 0.5s;
-}
-
-.login-form input[type="submit"]:hover {
-  background: #1770ac;
-  transition: 0.5s;
-}
-
-.student-home-page, .teacher-home-page {
-  margin: auto;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  background: white;
-  width: 450px;
-  border-radius: 10px;
-  padding: 0 40px 20px 40px;
-}
-
-.student-home-page h1, .teacher-home-page h1 {
-  padding: 20px 0 20px 0;
-  border-bottom: 1px solid silver;
-}
-
-.logout-button {
-  margin-left: 50%;
-  transform: translate(-50%);
-  width: 300px;
-  height: 50px;
-  border: 1px solid;
-  background: #d92326;
-  border-radius: 25px;
-  font-size: 18px;
-  color: #e9f4fb;
-  font-weight: 700;
-  cursor: pointer;
-  outline: none;
-  transition: 0.5s;
-}
-
-.logout-button:hover, .delete-course-button:hover, .delete-lecture-button:hover {
-  background: #b71f22;
-  transition: 0.5s;
-}
-
-.view-course-button {
-  margin-left: 50%;
-  margin-bottom: 10px;
-  transform: translate(-50%);
-  width: 300px;
-  height: 50px;
-  border: 1px solid;
-  background: #2691d9;
-  border-radius: 25px;
-  font-size: 18px;
-  color: #e9f4fb;
-  font-weight: 700;
-  cursor: pointer;
-  outline: none;
-  transition: 0.5s;
-}
-
-.view-course-button:hover {
-  background: #1770ac;
-  transition: 0.5s;
-}
-
-.info-dashboard, .course-list, .lecture-list, .session-list {
-  margin: auto;
-  margin-bottom: 20px;
-  width: 350px;
-  border: 2px solid gray;
-  border-radius: 10px;
-  padding: 10px;
-}
-
-.info-dashboard table {
-  text-align: left;
-  border-spacing: 10px;
-  table-layout: fixed;
-  width: 100%;
-  word-wrap: break-word;
-}
-
-.info-dashboard th {
-  width: 120px;
-  vertical-align: top;
-}
-
-.edit-button {
-  margin-left: 50%;
-  margin-bottom: 10px;
-  transform: translate(-50%);
-  width: 150px;
-  height: 30px;
-  border: 1px solid;
-  background: #2691d9;
-  border-radius: 25px;
-  font-size: 16px;
-  color: #e9f4fb;
-  font-weight: 700;
-  cursor: pointer;
-  outline: none;
-  transition: 0.5s;
-}
-
-.edit-button:hover {
-  background: #1770ac;
-  transition: 0.5s;
-}
-
-.student-course-menu, .student-lecture-menu, .student-session-menu, .student-session-detail,
-.teacher-course-menu, .teacher-lecture-menu, .teacher-session-menu {
-  margin: auto;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  background: white;
-  width: 450px;
-  border-radius: 10px;
-  padding: 0 40px 20px 40px;
-}
-
-.student-course-menu h1, .student-lecture-menu h1, .student-session-menu h1, .student-session-detail h1,
-.teacher-course-menu h1, .teacher-lecture-menu h1, .teacher-session-menu h1 {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid silver;
-  text-align: center;
-}
-
-.course-list, .lecture-list, .session-list {
-  height: 350px;
-  overflow-y: auto;
-}
-
-.course-list input[type="button"], .lecture-list input[type="button"], .session-list input[type="button"] {
-  margin-left: 25px;
-  margin-bottom: 10px;
-  width: 300px;
-  height: 40px;
-  border-radius: 10px;
-  font-size: 16px;
-  cursor: pointer;
-  outline: none;
-  background: #1d2671;
-  color: white;
-  transition: 0.5s;
-}
-
-.course-list input[type="button"]:hover, .lecture-list input[type="button"]:hover, .session-list input[type="button"]:hover {
-  background: #c33764;
-  transition: 0.5s;
-}
-
-.navigation-table {
-  width: 100%;
-  text-align: center;
-  border-spacing: 10px;
-  table-layout: fixed;
-}
-
-.home-button, .back-button {
-  width: 100%;
-  border: 1px solid;
-  background: #2691d9;
-  border-radius: 25px;
-  height: 40px;
-  font-size: 16px;
-  color: #e9f4fb;
-  font-weight: 700;
-  cursor: pointer;
-  outline: none;
-  transition: 0.5s;
-  height: 50px;
-}
-
-.home-button:hover, .back-button:hover, .check-in-button:hover, .add-lecture-button:hover,
-.add-session-button:hover, .add-course-button:hover {
-  background: #1770ac;
-  transition: 0.5s;
-}
-
-.info-table {
-  text-align: left;
-  width: 100%;
-  border-spacing: 10px;
-  margin-bottom: 20px;
-  border-bottom: 1px solid silver;
-}
-
-.info-table th {
-  width: 200px;
-  padding-left: 30px;
-}
-
-.check-in-button, .add-course-button, .add-lecture-button, .add-session-button, .add-course-button {
-  margin-left: 50%;
-  transform: translate(-50%);
-  padding: 15px 30px;
-  border: 1px solid;
-  background: #2691d9;
-  border-radius: 25px;
-  font-size: 15px;
-  color: #e9f4fb;
-  font-weight: 700;
-  cursor: pointer;
-  outline: none;
-  transition: 0.5s;
-}
-
-/* TEACHER HOMEPAGE */
-
-.info-teacher-dashboard table {
-  text-align: left;
-  border-spacing: 10px;
-  table-layout: fixed;
-  width: 100%;
-  word-wrap: break-word;
-}
-
-.info-teacher-dashboard th {
-  width: 120px;
-  vertical-align: top;
-}
-
-.delete-course-button, .delete-lecture-button {
-  margin-top: 10px;
-  margin-left: 50%;
-  transform: translate(-50%);
-  width: 95%;
-  height: 50px;
-  border: 1px solid;
-  background: #d92326;
-  border-radius: 25px;
-  font-size: 18px;
-  color: #e9f4fb;
-  font-weight: 700;
-  cursor: pointer;
-  outline: none;
-  transition: 0.5s;
-}
-
-/* Session Detail */
-.add-session, .add-lecture, .add-course {
-  margin: auto;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  background: white;
-  width: 450px;
-  border-radius: 10px;
-  padding: 0 40px 20px 40px;
-}
-
-.add-session h1, .add-lecture h1, .add-course h1 {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid silver;
-  text-align: center;
-}
-
-.form-control {
-  text-align: left;
-  margin-bottom: 25px;
-}
-
-.form-control label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #c33764, #1d2671);
+    font-family: 'montserrat', sans-serif;
+    overflow-y: scroll;
+  }
+  
+  .login-form {
+    margin: auto;
+    margin-top: 150px;
+    background: white;
+    width: 400px;
+    border-radius: 10px;
+  }
+  
+  .login-form h1, .student-home-page h1, .teacher-home-page h1 {
+    text-align: center;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid silver;
+  }
+  
+  .login-form form {
+    padding: 0 40px;
+    box-sizing: border-box;
+  }
+  
+  .login-form input {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 20px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid silver;
+    background: none;
+    outline: none;
+    transition: 0.1s;
+  }
+  
+  .login-form input:focus{
+    border-bottom: 2px solid #2691d9;
+  }
+  
+  .login-form input[type="button"] {
+    margin-bottom: 20px;
+    border-top: none;
+    border: none;
+    background: none;
+    outline: none;
+    transition: 0.1s;
+  }
+  
+  .login-form input[type="button"]:hover {
+    color: #1770ac;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+  
+  .login-form input[type="submit"]{
+    width: 100%;
+    height: 50px;
+    border: 1px solid;
+    background: #2691d9;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    transition: 0.5s;
+  }
+  
+  .login-form input[type="submit"]:hover {
+    background: #1770ac;
+    transition: 0.5s;
+  }
+  
+  .student-home-page, .teacher-home-page {
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background: white;
+    width: 450px;
+    border-radius: 10px;
+    padding: 0 40px 20px 40px;
+  }
+  
+  .logout-button {
+    margin-left: 50%;
+    transform: translate(-50%);
+    width: 300px;
+    height: 50px;
+    border: 1px solid;
+    background: #d92326;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    transition: 0.5s;
+  }
+  
+  .logout-button:hover, .delete-course-button:hover, .delete-lecture-button:hover {
+    background: #b71f22;
+    transition: 0.5s;
+  }
+  
+  .view-course-button, .auto-check-in-button, .student-list-button {
+    margin-left: 50%;
+    margin-bottom: 10px;
+    transform: translate(-50%);
+    width: 300px;
+    height: 50px;
+    border: 1px solid;
+    background: #2691d9;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    transition: 0.5s;
+  }
+  
+  .view-course-button:hover, .auto-check-in-button:hover, .edit-button:hover, .add-course-button:hover,
+  .student-list-button:hover {
+    background: #1770ac;
+    transition: 0.5s;
+  }
+  
+  .info-dashboard, .course-list, .lecture-list, .session-list {
+    margin: auto;
+    margin-bottom: 20px;
+    width: 350px;
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 10px;
+  }
+  
+  .info-dashboard table {
+    text-align: left;
+    border-spacing: 10px;
+    table-layout: fixed;
+    width: 100%;
+    word-wrap: break-word;
+  }
+  
+  .info-dashboard th {
+    width: 120px;
+    vertical-align: top;
+  }
+  
+  .edit-button {
+    margin-left: 50%;
+    margin-bottom: 10px;
+    transform: translate(-50%);
+    width: 150px;
+    height: 30px;
+    border: 1px solid;
+    background: #2691d9;
+    border-radius: 25px;
+    font-size: 16px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    transition: 0.5s;
+  }
+  
+  .student-course-menu, .student-lecture-menu, .student-session-menu, .student-session-detail,
+  .teacher-course-menu, .teacher-lecture-menu, .teacher-session-menu {
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background: white;
+    width: 450px;
+    border-radius: 10px;
+    padding: 0 40px 20px 40px;
+  }
+  
+  .student-course-menu h1, .student-lecture-menu h1, .student-session-menu h1, .student-session-detail h1,
+  .teacher-course-menu h1, .teacher-lecture-menu h1, .teacher-session-menu h1 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid silver;
+    text-align: center;
+  }
+  
+  .course-list, .lecture-list, .session-list {
+    height: 350px;
+    overflow-y: auto;
+  }
+  
+  .course-list input[type="button"], .lecture-list input[type="button"], .session-list input[type="button"] {
+    margin-left: 25px;
+    margin-bottom: 10px;
+    width: 300px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    background: #1d2671;
+    color: white;
+    transition: 0.5s;
+  }
+  
+  .course-list input[type="button"]:hover, .lecture-list input[type="button"]:hover, .session-list input[type="button"]:hover {
+    background: #c33764;
+    transition: 0.5s;
+  }
+  
+  .navigation-table {
+    width: 100%;
+    text-align: center;
+    border-spacing: 10px;
+    table-layout: fixed;
+  }
+  
+  .home-button, .back-button {
+    width: 100%;
+    border: 1px solid;
+    background: #2691d9;
+    border-radius: 25px;
+    height: 40px;
+    font-size: 16px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    transition: 0.5s;
+    height: 50px;
+  }
+  
+  .home-button:hover, .back-button:hover, .check-in-button:hover, .add-lecture-button:hover, .add-session-button:hover {
+    background: #1770ac;
+    transition: 0.5s;
+  }
+  
+  .info-table {
+    text-align: left;
+    width: 100%;
+    border-spacing: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid silver;
+    table-layout: fixed;
+    word-wrap: break-word;
+  }
+  
+  .info-table th {
+    width: 200px;
+    padding-left: 30px;
+    vertical-align: top;
+  }
+  
+  .check-in-button, .add-course-button, .add-lecture-button, .add-session-button {
+    margin-left: 50%;
+    transform: translate(-50%);
+    width: 95%;
+    height: 50px;
+    border: 1px solid;
+    background: #2691d9;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    transition: 0.5s;
+  }
+  
+  /* TEACHER HOMEPAGE */
+  
+  .info-teacher-dashboard table {
+    text-align: left;
+    border-spacing: 10px;
+    table-layout: fixed;
+    width: 100%;
+    word-wrap: break-word;
+  }
+  
+  .info-teacher-dashboard th {
+    width: 120px;
+    vertical-align: top;
+  }
+  
+  .delete-course-button, .delete-lecture-button {
+    margin-top: 10px;
+    margin-left: 50%;
+    transform: translate(-50%);
+    width: 95%;
+    height: 50px;
+    border: 1px solid;
+    background: #d92326;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    transition: 0.5s;
+  }
+  

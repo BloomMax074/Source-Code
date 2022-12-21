@@ -49,13 +49,7 @@ const AddSession = () => {
                                 placeholder="Session End Time" 
                                 min="7:00" max="17:00" required/>
                         </div>
-                        <table>
-                            <tr>
-                                <td>
-                                    <input className="add-session-button" type={"button"} value="ADD SESSION"></input>
-                                </td>
-                            </tr>
-                        </table>
+                        <input className="add-session-button" type={"button"} value="ADD SESSION"></input>
                     </form>
                 </form>
             </div>

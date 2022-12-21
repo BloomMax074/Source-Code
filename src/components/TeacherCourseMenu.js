@@ -26,7 +26,8 @@ const TeacherCourseMenu = () => {
                             <input type="button" value="COURSE 1"></input>
                             <input type="button" value="COURSE 1"></input>
                         </div>
-                        <table>
+                        <input className="add-course-button" type={"button"} value="ADD NEW COURSE"></input>
+                        <table className="navigation-table">
                             <tr>
                                 <td>
                                     <input className="home-button" type={"button"} value="HOME"></input>

@@ -23,6 +23,7 @@ const StudentHP = () => {
                         </table>
                         <input className="edit-button" type="button" value="EDIT"/>
                     </div>
+                    <input className="auto-check-in-button" type="button" value="CHECK IN"/>
                     <input className="view-course-button" type="button" value="VIEW COURSES"/>
                     <input className="logout-button" type="button" value="LOGOUT"/>
                 </form>

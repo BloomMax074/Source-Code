@@ -24,6 +24,7 @@ const TeacherHP = () => {
                         </table>
                         <input className="edit-button" type="button" value="EDIT"/>
                     </div>
+                    <input className="student-list-button" type="button" value="STUDENT LIST"/>
                     <input className="view-course-button" type="button" value="VIEW COURSES"/>
                     <input className="logout-button" type="button" value="LOGOUT"/>
                 </form>

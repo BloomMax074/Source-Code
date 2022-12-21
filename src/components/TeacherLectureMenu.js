@@ -5,7 +5,26 @@ const TeacherLectureMenu = () => {
         <teacherlecturemenu>
             <div className="teacher-lecture-menu">
                 <form>
-                    <h1>Lecture Menu</h1>
+                    <h1>Python</h1>
+                    <table className="info-table">
+                        <tr>
+                            <th>COURSE NAME</th>
+                            <td>Python</td>
+                        </tr>
+                        <tr>
+                            <th>COURSE ID</th>
+                            <td>P01</td>
+                        </tr>
+                        <tr>
+                            <th>COURSE DESCRIPTION</th>
+                            <td>A course in Python programing Language.</td>
+                        </tr>
+                        <tr>
+                            <td colSpan={2}>
+                                <input type={"button"} className="edit-button" value="Edit"></input>
+                            </td>
+                        </tr>
+                    </table>
                     <form>
                         <div className="lecture-list">
                             <input type="button" value="Lecture 1"></input>
@@ -19,7 +38,7 @@ const TeacherLectureMenu = () => {
                             <input type="button" value="Lecture 9"></input>
                             <input type="button" value="Lecture 10"></input>
                         </div>
-                        <table>
+                        <table className="navigation-table">
                             <tr>
                                 <td>
                                     <input className="add-lecture-button" type={"button"} value="ADD LECTURE"></input>
@@ -29,16 +48,16 @@ const TeacherLectureMenu = () => {
                                 </td>
                             </tr>
                         </table>
-                        <table>
-                            <tr>
-                                <td>
-                                    <input className="home-button" type={"button"} value="HOME"></input>
-                                </td>
-                                <td>
-                                    <input className="back-button" type={"button"} value="BACK"></input>
-                                </td>
-                            </tr>
-                        </table>
+                        <table className="navigation-table">
+                        <tr>
+                            <td>
+                                <input className="home-button" type={"button"} value="HOME"></input>
+                            </td>
+                            <td>
+                                <input className="back-button" type={"button"} value="BACK"></input>
+                            </td>
+                        </tr>
+                    </table>
                     </form>
                 </form>
             </div>

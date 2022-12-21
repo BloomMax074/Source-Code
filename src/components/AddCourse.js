@@ -31,13 +31,7 @@ const AddCourse = () => {
 				                id="description"
 				                placeholder="Enter Course Description" />
 		                </div>
-                        <table>
-                            <tr>
-                                <td>
-                                    <input className="add-course-button" type={"button"} value="ADD COURSE"></input>
-                                </td>
-                            </tr>
-                        </table>
+                        <input className="add-course-button" type={"button"} value="ADD COURSE"></input>
                     </form>
             </form>
             </div>

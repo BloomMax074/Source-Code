@@ -19,6 +19,10 @@ const StudentSessionMenu = () => {
                             <th>LECTURE 1</th>
                             <td>12/10/2022</td>
                         </tr>
+                        <tr>
+                            <th>LECTURE DESCRIPTION</th>
+                            <td>Python data types & fundamentals.</td>
+                        </tr>
                     </table>
                     <div className="session-list">
                         <input type="button" value="SESSION 1"></input>
