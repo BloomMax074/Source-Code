@@ -6,7 +6,7 @@ const TeacherHP = () => {
             <div className="teacher-home-page">
                 <form>
                     <h1>Welcome, Phạm Vũ Hải </h1>
-                    <div className="info-teacher-dashboard">
+                    <div className="info-dashboard">
                         <table>
                             <tr>
                                 <th>Full Name</th>
@@ -20,13 +20,18 @@ const TeacherHP = () => {
                                 <th>Course In Charge</th>
                                 <td>HTML</td> <td>Java Script</td>
                             </tr>
-
                         </table>
                         <input className="edit-button" type="button" value="EDIT"/>
                     </div>
-                    <input className="student-list-button" type="button" value="STUDENT LIST"/>
-                    <input className="view-course-button" type="button" value="VIEW COURSES"/>
-                    <input className="logout-button" type="button" value="LOGOUT"/>
+                    <table className="navigation-table">
+                        <tr>
+                            <td>
+                                <input className="student-list-button" type="button" value="STUDENT LIST"/>
+                                <input className="view-course-button" type="button" value="VIEW COURSES"/>
+                                <input className="logout-button" type="button" value="LOGOUT"/>
+                            </td>
+                        </tr>
+                    </table>
                 </form>
             </div>
         </teacherhp>

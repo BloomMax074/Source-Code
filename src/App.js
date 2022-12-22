@@ -16,7 +16,7 @@ import AddLecture from "./components/AddLecture";
 function App() {
   return (
     <div className="container">
-      <LoginForm/>
+      <AddSession/>
     </div>
   );
 }
