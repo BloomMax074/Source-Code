@@ -1,6 +1,8 @@
-import React from "react"
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
-const LoginForm = () => {
+function LoginForm () {
+    let navigate = useNavigate();
     return (
         <loginform>
             <div className="login-form">
@@ -12,12 +14,16 @@ const LoginForm = () => {
                     <div className="login-form-input">
                         <input type="password" placeholder="Password" name="password" id="password" required/>
                     </div>
-                    <input type="submit" value="LOGIN"/>
+                    <table className="navigation-table">
+                    <button className="login-button" onClick={() => {navigate('/TeacherHP') }}>
+                        Login
+                    </button>
                     <input type="button" value="Forgot Pasword?"></input>
+                    </table>
                 </form>
             </div>
         </loginform>
-    )
+    );
 }
 
 export default LoginForm

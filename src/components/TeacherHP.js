@@ -1,6 +1,6 @@
-import React from "react"
+import React from "react";
 
-const TeacherHP = () => {
+function TeacherHP () {
     return (
         <teacherhp>
             <div className="teacher-home-page">
@@ -35,7 +35,7 @@ const TeacherHP = () => {
                 </form>
             </div>
         </teacherhp>
-    )
+    );
 }
 
 export default TeacherHP

@@ -1,4 +1,5 @@
-import LoginForm from "./components/LoginForm"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import LoginForm from "./components/LoginForm";
 import StudentCourseMenu from "./components/StudentCourseMenu";
 import StudentHP from "./components/StudentHP";
 import StudentSessionMenu from "./components/StudentSessionMenu";
@@ -11,14 +12,18 @@ import TeacherSessionMenu from "./components/TeacherSessionMenu";
 import AddCourse from "./components/AddCourse";
 import AddSession from "./components/AddSession";
 import AddLecture from "./components/AddLecture";
+import "./index.css"
 
+const App = () => {
+    return (
+      <Router>
+          <Routes>
+            <Route exact path='/LoginForm' element={<LoginForm/>} />
+            <Route exact path='/TeacherHP' element={<TeacherHP/>} />
+          </Routes>
+      </Router>
+    );
+  }
 
-function App() {
-  return (
-    <div className="container">
-      <AddSession/>
-    </div>
-  );
-}
 
 export default App;

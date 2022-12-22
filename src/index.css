@@ -109,7 +109,7 @@ body {
     transition: 0.5s;
   }
   
-  .view-course-button, .auto-check-in-button, .student-list-button {
+  .view-course-button, .auto-check-in-button, .student-list-button, .login-button {
     margin-left: 50%;
     margin-bottom: 10px;
     transform: translate(-50%);
@@ -127,7 +127,7 @@ body {
   }
   
   .view-course-button:hover, .auto-check-in-button:hover, .edit-button:hover, .add-course-button:hover,
-  .student-list-button:hover {
+  .student-list-button:hover, .login-button:hover {
     background: #1770ac;
     transition: 0.5s;
   }
