@@ -1,6 +1,8 @@
 import React from "react"
+import { useNavigate } from "react-router-dom";
 
 const TeacherSessionMenu = () => {
+    let navigate = useNavigate();
     return (
         <teachersessionmenu>
             <div className="teacher-session-menu">
@@ -35,34 +37,43 @@ const TeacherSessionMenu = () => {
                     </table>
                     <form>
                         <div className="session-list">
-                            <input type="button" value="Session 1"></input>
-                            <input type="button" value="Session 2"></input>
-                            <input type="button" value="Session 3"></input>
-                            <input type="button" value="Session 4"></input>
-                            <input type="button" value="Session 5"></input>
-                            <input type="button" value="Session 6"></input>
-                            <input type="button" value="Session 7"></input>
-                            <input type="button" value="Session 8"></input>
-                            <input type="button" value="Session 9"></input>
-                            <input type="button" value="Session 10"></input>
+                            <input type="button" value="Session 1" onClick={() => {navigate('/')}}></input>
+                            <input type="button" value="Session 1" onClick={() => {navigate('/')}}></input>
+                            <input type="button" value="Session 1" onClick={() => {navigate('/')}}></input>
+                            <input type="button" value="Session 1" onClick={() => {navigate('/')}}></input>
+                            <input type="button" value="Session 1" onClick={() => {navigate('/')}}></input>
+                            <input type="button" value="Session 1" onClick={() => {navigate('/')}}></input>
+                            <input type="button" value="Session 1" onClick={() => {navigate('/')}}></input>
+                            <input type="button" value="Session 1" onClick={() => {navigate('/')}}></input>
+                            <input type="button" value="Session 1" onClick={() => {navigate('/')}}></input>
+                            <input type="button" value="Session 1" onClick={() => {navigate('/')}}></input>
+                            
                         </div>
                         <table className="navigation-table">
                             <tr>
                                 <td>
-                                    <input className="add-session-button" type={"button"} value="ADD NEW SESSION"></input>
+                                    <button className="add-session-button" onClick={() => {navigate('/AddSession') }}>
+                                        ADD SESSION
+                                    </button>
                                 </td>
                                 <td>
-                                    <input className="delete-lecture-button" type={"button"} value="DELETE LECTURE"></input>
+                                    <button className="delete-session-button" onClick={() => {navigate('/') }}>
+                                        DELETE SESSION
+                                    </button>
                                 </td>
                             </tr>
                         </table>
                         <table className="navigation-table">
                             <tr>
                                 <td>
-                                    <input className="home-button" type={"button"} value="HOME"></input>
+                                    <button className="home-button" onClick={() => {navigate('/TeacherHP') }}>
+                                        HOME
+                                    </button>
                                 </td>
                                 <td>
-                                    <input className="back-button" type={"button"} value="BACK"></input>
+                                    <button className="back-button" onClick={() => {navigate('/TeacherLectureMenu')}}>
+                                        BACK
+                                    </button>
                                 </td>
                             </tr>
                         </table>

@@ -221,7 +221,7 @@ body {
     table-layout: fixed;
   }
   
-  .home-button, .back-button {
+  .home-button, .back-button, .add-lecture-button, .add-session-button, .delete-session-button {
     width: 100%;
     border: 1px solid;
     background: #2691d9;

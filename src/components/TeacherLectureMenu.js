@@ -1,6 +1,8 @@
 import React from "react"
+import { useNavigate } from "react-router-dom";
 
 const TeacherLectureMenu = () => {
+    let navigate = useNavigate();
     return (
         <teacherlecturemenu>
             <div className="teacher-lecture-menu">
@@ -27,21 +29,24 @@ const TeacherLectureMenu = () => {
                     </table>
                     <form>
                         <div className="lecture-list">
-                            <input type="button" value="Lecture 1"></input>
-                            <input type="button" value="Lecture 2"></input>
-                            <input type="button" value="Lecture 3"></input>
-                            <input type="button" value="Lecture 4"></input>
-                            <input type="button" value="Lecture 5"></input>
-                            <input type="button" value="Lecture 6"></input>
-                            <input type="button" value="Lecture 7"></input>
-                            <input type="button" value="Lecture 8"></input>
-                            <input type="button" value="Lecture 9"></input>
-                            <input type="button" value="Lecture 10"></input>
+                        <input type="button" value="Lecture 1" onClick={() => {navigate('/TeacherSessionMenu')}}></input>
+                        <input type="button" value="Lecture 1" onClick={() => {navigate('/TeacherSessionMenu')}}></input>
+                        <input type="button" value="Lecture 1" onClick={() => {navigate('/TeacherSessionMenu')}}></input>
+                        <input type="button" value="Lecture 1" onClick={() => {navigate('/TeacherSessionMenu')}}></input>
+                        <input type="button" value="Lecture 1" onClick={() => {navigate('/TeacherSessionMenu')}}></input>
+                        <input type="button" value="Lecture 1" onClick={() => {navigate('/TeacherSessionMenu')}}></input>
+                        <input type="button" value="Lecture 1" onClick={() => {navigate('/TeacherSessionMenu')}}></input>
+                        <input type="button" value="Lecture 1" onClick={() => {navigate('/TeacherSessionMenu')}}></input>
+                        <input type="button" value="Lecture 1" onClick={() => {navigate('/TeacherSessionMenu')}}></input>
+                        <input type="button" value="Lecture 1" onClick={() => {navigate('/TeacherSessionMenu')}}></input>
                         </div>
+
                         <table className="navigation-table">
                             <tr>
                                 <td>
-                                    <input className="add-lecture-button" type={"button"} value="ADD LECTURE"></input>
+                                    <button className="add-lecture-button" onClick={() => {navigate('/AddLecture') }}>
+                                        ADD LECTURE
+                                    </button>
                                 </td>
                                 <td>
                                     <input className="delete-lecture-button" type={"button"} value="DELETE LECTURE"></input>
@@ -49,15 +54,19 @@ const TeacherLectureMenu = () => {
                             </tr>
                         </table>
                         <table className="navigation-table">
-                        <tr>
-                            <td>
-                                <input className="home-button" type={"button"} value="HOME"></input>
-                            </td>
-                            <td>
-                                <input className="back-button" type={"button"} value="BACK"></input>
-                            </td>
-                        </tr>
-                    </table>
+                            <tr>
+                                <td>
+                                    <button className="home-button" onClick={() => {navigate('/TeacherHP') }}>
+                                        HOME
+                                    </button>
+                                </td>
+                                <td>
+                                    <button className="back-button" onClick={() => {navigate('/TeacherCourseMenu')}}>
+                                        BACK
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
                     </form>
                 </form>
             </div>

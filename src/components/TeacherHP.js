@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function TeacherHP () {
+    let navigate = useNavigate();
     return (
         <teacherhp>
             <div className="teacher-home-page">
@@ -27,8 +29,12 @@ function TeacherHP () {
                         <tr>
                             <td>
                                 <input className="student-list-button" type="button" value="STUDENT LIST"/>
-                                <input className="view-course-button" type="button" value="VIEW COURSES"/>
-                                <input className="logout-button" type="button" value="LOGOUT"/>
+                                <button className="view-course-button" onClick={() => {navigate('/TeacherCourseMenu') }}>
+                                    COURSE LIST 
+                                </button>
+                                <button className="logout-button" onClick={() => {navigate('/LoginForm')}}>
+                                    LOGOUT
+                                </button>
                             </td>
                         </tr>
                     </table>

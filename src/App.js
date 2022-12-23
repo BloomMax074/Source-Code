@@ -20,6 +20,12 @@ const App = () => {
           <Routes>
             <Route exact path='/LoginForm' element={<LoginForm/>} />
             <Route exact path='/TeacherHP' element={<TeacherHP/>} />
+            <Route exact path='/TeacherCourseMenu' element={<TeacherCourseMenu/>} />
+            <Route exact path='/AddCourse' element={<AddCourse/>} />
+            <Route exact path='/TeacherLectureMenu' element={<TeacherLectureMenu/>} />
+            <Route exact path='/TeacherSessionMenu' element={<TeacherSessionMenu/>} />
+            <Route exact path='/AddLecture' element={<AddLecture/>} />
+            <Route exact path='/AddSession' element={<AddSession/>} />
           </Routes>
       </Router>
     );
