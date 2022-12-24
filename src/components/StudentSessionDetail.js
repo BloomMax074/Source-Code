@@ -1,6 +1,8 @@
 import React from "react"
+import { useNavigate } from "react-router-dom";
 
 const StudentSessionDetail = () => {
+    let navigate = useNavigate();
     return (
         <studentsessiondetail>
             <div className="student-session-detail">
@@ -32,10 +34,10 @@ const StudentSessionDetail = () => {
                     <table className="navigation-table">
                         <tr>
                             <td>
-                                <input className="home-button" type={"button"} value="HOME"></input>
+                                <input className="home-button" type={"button"} value="HOME" onClick={() => {navigate('/StudentHP')}}></input>
                             </td>
                             <td>
-                                <input className="back-button" type={"button"} value="BACK"></input>
+                                <input className="back-button" type={"button"} value="BACK" onClick={() => {navigate('/StudentSessionMenu')}}></input>
                             </td>
                         </tr>
                     </table>

@@ -1,6 +1,8 @@
 import React from "react"
+import { useNavigate } from "react-router-dom";
 
 const StudentCourseMenu = () => {
+    let navigate = useNavigate();
     return (
         <studentcoursemenu>
             <div className="student-course-menu">
@@ -8,31 +10,25 @@ const StudentCourseMenu = () => {
                     <h1>ENROLLED COURSES</h1>
                     <form>
                         <div className="course-list">
-                            <input type="button" value="COURSE 1"></input>
-                            <input type="button" value="COURSE 1"></input>
-                            <input type="button" value="COURSE 1"></input>
-                            <input type="button" value="COURSE 1"></input>
-                            <input type="button" value="COURSE 1"></input>
-                            <input type="button" value="COURSE 1"></input>
-                            <input type="button" value="COURSE 1"></input>
-                            <input type="button" value="COURSE 1"></input>
-                            <input type="button" value="COURSE 1"></input>
-                            <input type="button" value="COURSE 1"></input>
-                            <input type="button" value="COURSE 1"></input>
-                            <input type="button" value="COURSE 1"></input>
-                            <input type="button" value="COURSE 1"></input>
-                            <input type="button" value="COURSE 1"></input>
-                            <input type="button" value="COURSE 1"></input>
-                            <input type="button" value="COURSE 1"></input>
-                            <input type="button" value="COURSE 1"></input>
+                            <input type="button" value="COURSE 1" onClick={() => {navigate('/StudentLectureMenu')}}></input>
+                            <input type="button" value="COURSE 1" onClick={() => {navigate('/StudentLectureMenu')}}></input>
+                            <input type="button" value="COURSE 1" onClick={() => {navigate('/StudentLectureMenu')}}></input>
+                            <input type="button" value="COURSE 1" onClick={() => {navigate('/StudentLectureMenu')}}></input>
+                            <input type="button" value="COURSE 1" onClick={() => {navigate('/StudentLectureMenu')}}></input>
+                            <input type="button" value="COURSE 1" onClick={() => {navigate('/StudentLectureMenu')}}></input>
+                            <input type="button" value="COURSE 1" onClick={() => {navigate('/StudentLectureMenu')}}></input>
+                            <input type="button" value="COURSE 1" onClick={() => {navigate('/StudentLectureMenu')}}></input>
+                            <input type="button" value="COURSE 1" onClick={() => {navigate('/StudentLectureMenu')}}></input>
+                            <input type="button" value="COURSE 1" onClick={() => {navigate('/StudentLectureMenu')}}></input>
+                            <input type="button" value="COURSE 1" onClick={() => {navigate('/StudentLectureMenu')}}></input>
                         </div>
                         <table className="navigation-table">
                             <tr>
                                 <td>
-                                    <input className="home-button" type={"button"} value="HOME"></input>
+                                    <input className="home-button" type={"button"} onClick={() => {navigate('/StudentHP')}} value="HOME"></input>
                                 </td>
                                 <td>
-                                    <input className="back-button" type={"button"} value="BACK"></input>
+                                    <input className="back-button" type={"button"} onClick={() => {navigate('/StudentHP')}} value="BACK"></input>
                                 </td>
                             </tr>
                         </table>

@@ -20,12 +20,17 @@ const App = () => {
           <Routes>
             <Route exact path='/LoginForm' element={<LoginForm/>} />
             <Route exact path='/TeacherHP' element={<TeacherHP/>} />
+            <Route exact path='/StudentHP' element={<StudentHP/>} />
             <Route exact path='/TeacherCourseMenu' element={<TeacherCourseMenu/>} />
+            <Route exact path='/StudentCourseMenu' element={<StudentCourseMenu/>} />
             <Route exact path='/AddCourse' element={<AddCourse/>} />
             <Route exact path='/TeacherLectureMenu' element={<TeacherLectureMenu/>} />
+            <Route exact path='/StudentLectureMenu' element={<StudentLectureMenu/>} />
             <Route exact path='/TeacherSessionMenu' element={<TeacherSessionMenu/>} />
+            <Route exact path='/StudentSessionMenu' element={<StudentSessionMenu/>} />
             <Route exact path='/AddLecture' element={<AddLecture/>} />
             <Route exact path='/AddSession' element={<AddSession/>} />
+            <Route exact path='/StudentSessionDetail' element={<StudentSessionDetail/>} />
           </Routes>
       </Router>
     );

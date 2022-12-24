@@ -1,6 +1,8 @@
 import React from "react"
+import { useNavigate } from "react-router-dom";
 
 const StudentLectureMenu = () => {
+    let navigate = useNavigate();
     return (
         <studentlecturemenu>
             <div className="student-lecture-menu">
@@ -21,23 +23,15 @@ const StudentLectureMenu = () => {
                         </tr>
                     </table>
                     <div className="lecture-list">
-                        <input type="button" value="LECTURE 1"></input>
-                        <input type="button" value="LECTURE 1"></input>
-                        <input type="button" value="LECTURE 1"></input>
-                        <input type="button" value="LECTURE 1"></input>
-                        <input type="button" value="LECTURE 1"></input>
-                        <input type="button" value="LECTURE 1"></input>
-                        <input type="button" value="LECTURE 1"></input>
-                        <input type="button" value="LECTURE 1"></input>
-                        <input type="button" value="LECTURE 1"></input>
+                        <input type="button" value="LECTURE 1" onClick={() => {navigate('/StudentSessionMenu')}}></input>
                     </div>
                     <table className="navigation-table">
                         <tr>
                             <td>
-                                <input className="home-button" type={"button"} value="HOME"></input>
+                                <input className="home-button" type={"button"} value="HOME" onClick={() => {navigate('/StudentHP')}}></input>
                             </td>
                             <td>
-                                <input className="back-button" type={"button"} value="BACK"></input>
+                                <input className="back-button" type={"button"} value="BACK" onClick={() => {navigate('/StudentCourseMenu')}}></input>
                             </td>
                         </tr>
                     </table>

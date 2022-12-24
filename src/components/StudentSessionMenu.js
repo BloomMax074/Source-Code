@@ -1,6 +1,8 @@
 import React from "react"
+import { useNavigate } from "react-router-dom";
 
 const StudentSessionMenu = () => {
+    let navigate = useNavigate();
     return (
         <studentsessionmenu>
             <div className="student-session-menu">
@@ -25,25 +27,15 @@ const StudentSessionMenu = () => {
                         </tr>
                     </table>
                     <div className="session-list">
-                        <input type="button" value="SESSION 1"></input>
-                        <input type="button" value="SESSION 1"></input>
-                        <input type="button" value="SESSION 1"></input>
-                        <input type="button" value="SESSION 1"></input>
-                        <input type="button" value="SESSION 1"></input>
-                        <input type="button" value="SESSION 1"></input>
-                        <input type="button" value="SESSION 1"></input>
-                        <input type="button" value="SESSION 1"></input>
-                        <input type="button" value="SESSION 1"></input>
-                        <input type="button" value="SESSION 1"></input>
-                        <input type="button" value="SESSION 1"></input>
+                        <input type="button" value="SESSION 1" onClick={() => {navigate('/StudentSessionDetail')}}></input>
                     </div>
                     <table className="navigation-table">
                         <tr>
                             <td>
-                                <input className="home-button" type={"button"} value="HOME"></input>
+                                <input className="home-button" type={"button"} value="HOME" onClick={() => {navigate('/StudentHP')}}></input>
                             </td>
                             <td>
-                                <input className="back-button" type={"button"} value="BACK"></input>
+                                <input className="back-button" type={"button"} value="BACK" onClick={() => {navigate('/StudentLectureMenu')}}></input>
                             </td>
                         </tr>
                     </table>

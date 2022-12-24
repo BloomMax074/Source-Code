@@ -271,6 +271,10 @@ body {
     outline: none;
     transition: 0.5s;
   }
+
+  .check-in-button {
+    width: 95%;
+  }
   
   .delete-course-button, .delete-lecture-button {
     margin-top: 10px;
