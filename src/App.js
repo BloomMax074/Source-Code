@@ -12,6 +12,7 @@ import TeacherSessionMenu from "./components/TeacherSessionMenu";
 import AddCourse from "./components/AddCourse";
 import AddSession from "./components/AddSession";
 import AddLecture from "./components/AddLecture";
+import TeacherSessionDetail from "./components/TeacherSessionDetail";
 import "./index.css"
 
 const App = () => {
@@ -31,6 +32,7 @@ const App = () => {
             <Route exact path='/AddLecture' element={<AddLecture/>} />
             <Route exact path='/AddSession' element={<AddSession/>} />
             <Route exact path='/StudentSessionDetail' element={<StudentSessionDetail/>} />
+            <Route exact path='/TeacherSessionDetail' element={<TeacherSessionDetail/>} />
           </Routes>
       </Router>
     );

@@ -1,7 +1,13 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
-function TeacherHP () {
+const TeacherHP = () => {
+    const location = useLocation()
+    var access_token = location.state.access_token
+    var username = location.state.username
+    var fullname = location.state.fullname
+    var account_type = location.state.account_type
     let navigate = useNavigate();
     return (
         <teacherhp>
@@ -12,15 +18,15 @@ function TeacherHP () {
                         <table>
                             <tr>
                                 <th>Full Name</th>
-                                <td>Phạm Vũ Hải</td>
+                                <td>{fullname}</td>
                             </tr>
                             <tr>
-                                <th>Lecturer ID</th>
-                                <td>PRO-001</td>
+                                <th>Username</th>
+                                <td>{username}</td>
                             </tr>
                             <tr>                       
-                                <th>Course In Charge</th>
-                                <td>HTML</td> <td>Java Script</td>
+                                <th>Account Type</th>
+                                <td>{account_type}</td> 
                             </tr>
                         </table>
                         <input className="edit-button" type="button" value="EDIT"/>

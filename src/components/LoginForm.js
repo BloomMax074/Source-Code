@@ -13,6 +13,7 @@ function LoginForm () {
             password: password
         };
         var response = await axios.post("http://35.247.128.143:8000/api/auth/login", newLogin);
+        console.log(response);
         var access_token = response.data.access_token;
         var response = await axios.get("http://35.247.128.143:8000/api/auth/me", { headers: {"Authorization" : `Bearer ${access_token}`} });
         var account_type = response.data.account_type;
@@ -31,6 +32,9 @@ function LoginForm () {
             navigate('/TeacherHP', {
                 state : {
                     access_token : access_token,
+                    username : username,
+                    fullname : fullname,
+                    account_type : account_type
                 },
             });
         }
