@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
 import StudentCourseMenu from "./components/StudentCourseMenu";
 import StudentHP from "./components/StudentHP";
@@ -12,13 +12,14 @@ import TeacherSessionMenu from "./components/TeacherSessionMenu";
 import AddCourse from "./components/AddCourse";
 import AddSession from "./components/AddSession";
 import AddLecture from "./components/AddLecture";
-import TeacherSessionDetail from "./components/TeacherSessionDetail";
+import StudentEditProfile from "./components/StudentEditProfile";
 import "./index.css"
 
 const App = () => {
     return (
       <Router>
           <Routes>
+            <Route path="/" element={<Navigate replace to="/LoginForm" />} />
             <Route exact path='/LoginForm' element={<LoginForm/>} />
             <Route exact path='/TeacherHP' element={<TeacherHP/>} />
             <Route exact path='/StudentHP' element={<StudentHP/>} />
@@ -32,11 +33,10 @@ const App = () => {
             <Route exact path='/AddLecture' element={<AddLecture/>} />
             <Route exact path='/AddSession' element={<AddSession/>} />
             <Route exact path='/StudentSessionDetail' element={<StudentSessionDetail/>} />
-            <Route exact path='/TeacherSessionDetail' element={<TeacherSessionDetail/>} />
+            <Route exact path='/StudentEditProfile' element={<StudentEditProfile/>} />
           </Routes>
       </Router>
     );
   }
-
 
 export default App;

@@ -37,7 +37,7 @@ const TeacherSessionMenu = () => {
                     </table>
                     <form>
                         <div className="session-list">
-                            <input type="button" value="Session 1" onClick={() => {navigate('/TeacherSessionDetail')}}></input>
+                            <input type="button" value="Session 1" onClick={() => {navigate('/')}}></input>
                             <input type="button" value="Session 1" onClick={() => {navigate('/')}}></input>
                             <input type="button" value="Session 1" onClick={() => {navigate('/')}}></input>
                             <input type="button" value="Session 1" onClick={() => {navigate('/')}}></input>
