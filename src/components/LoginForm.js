@@ -31,6 +31,9 @@ function LoginForm () {
             navigate('/TeacherHP', {
                 state : {
                     access_token : access_token,
+                    username : username,
+                    fullname : fullname,
+                    account_type : account_type 
                 },
             });
         }

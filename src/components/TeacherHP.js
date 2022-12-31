@@ -1,47 +1,68 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import {useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
-function TeacherHP () {
+const TeacherHP = () => {
+    const location = useLocation()
+    var access_token = location.state.access_token
+    var username = location.state.username
+    var fullname = location.state.fullname
+    var account_type = location.state.account_type
     let navigate = useNavigate();
+
+    function toEditProfile(e) {
+        e.preventDefault();
+        navigate('/TeacherEditProfile', {
+            state : {
+                access_token : access_token,
+                username : username,
+                fullname : fullname,
+                account_type : account_type
+            },
+        });
+    }
+
+    async function toCourseMenu(e) {
+        e.preventDefault();
+        var response = await axios.get("http://35.247.128.143:8000/api/courses", { headers: { "Authorization" : `Bearer ${access_token}`} });
+        navigate('/TeacherCourseMenu', { 
+            state : {
+                access_token : access_token,
+                username : username,
+                fullname : fullname,
+                account_type : account_type,
+                course_list : response.data
+            },
+        });
+    }
+
     return (
-        <teacherhp>
             <div className="teacher-home-page">
                 <form>
-                    <h1>Welcome, Phạm Vũ Hải </h1>
+                    <h1>Welcome : TEACHER </h1>
                     <div className="info-dashboard">
                         <table>
                             <tr>
                                 <th>Full Name</th>
-                                <td>Phạm Vũ Hải</td>
+                                <td>{fullname}</td>
                             </tr>
                             <tr>
-                                <th>Lecturer ID</th>
-                                <td>PRO-001</td>
+                                <th>Username</th>
+                                <td>{username}</td>
                             </tr>
                             <tr>                       
-                                <th>Course In Charge</th>
-                                <td>HTML</td> <td>Java Script</td>
+                                <th>Account Type</th>
+                                <td>{account_type}</td>
                             </tr>
                         </table>
-                        <input className="edit-button" type="button" value="EDIT"/>
+                        <input className="edit-button" type="button" value="EDIT PROFILE" onclick={toEditProfile}/>
                     </div>
-                    <table className="navigation-table">
-                        <tr>
-                            <td>
-                                <input className="student-list-button" type="button" value="STUDENT LIST"/>
-                                <button className="view-course-button" onClick={() => {navigate('/TeacherCourseMenu') }}>
-                                    COURSE LIST 
-                                </button>
-                                <button className="logout-button" onClick={() => {navigate('/LoginForm')}}>
-                                    LOGOUT
-                                </button>
-                            </td>
-                        </tr>
-                    </table>
+                    <input className="student-list-button" type="button" value="STUDENT LIST"/>
+                    <input className="view-course-button" type="button" onClick={toCourseMenu} value="VIEW COURSE" />
+                    <input className="logout-button" type="button" onClick={() => {navigate('/LoginForm')}} value="LOGOUT"/>
                 </form>
             </div>
-        </teacherhp>
-    );
+    )
 }
 
 export default TeacherHP

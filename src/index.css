@@ -179,7 +179,7 @@ body {
   }
   
   .student-course-menu, .student-lecture-menu, .student-session-menu, .student-session-detail,
-  .teacher-course-menu, .teacher-lecture-menu, .teacher-session-menu {
+  .teacher-course-menu, .teacher-lecture-menu, .teacher-session-menu, .teacher-session-detail {
     margin: auto;
     margin-top: 50px;
     margin-bottom: 50px;
@@ -190,7 +190,7 @@ body {
   }
   
   .student-course-menu h1, .student-lecture-menu h1, .student-session-menu h1, .student-session-detail h1,
-  .teacher-course-menu h1, .teacher-lecture-menu h1, .teacher-session-menu h1 {
+  .teacher-course-menu h1, .teacher-lecture-menu h1, .teacher-session-menu h1, .teacher-session-detail h1{
     padding-top: 10px;
     padding-bottom: 10px;
     border-bottom: 1px solid silver;
@@ -264,7 +264,7 @@ body {
     vertical-align: top;
   }
   
-  .check-in-button, .add-course-button, .add-lecture-button, .add-session-button {
+  .check-in-button, .add-course-button, .add-lecture-button, .add-session-button, .end-session-button {
     margin-left: 50%;
     transform: translate(-50%);
     padding: 15px 30px;
@@ -279,7 +279,7 @@ body {
     transition: 0.5s;
   }
 
-  .check-in-button {
+  .check-in-button, .end-session-button {
     width: 95%;
   }
   
@@ -329,7 +329,7 @@ body {
   margin-bottom: 10px;
 }
 
-.student-edit-profile input[type="text"], .student-edit-profile input[type="password"] {
+.student-edit-profile input[type="text"], .student-edit-profile input[type="password"], .teacher-edit-profile input[type="text"], .student-edit-profile input[type="password"] {
   width: 100%;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -344,6 +344,7 @@ body {
   transition: 0.1s;
 }
 
-.student-edit-profile input[type="text"]:focus, .student-edit-profile input[type="password"]:focus {
+.student-edit-profile input[type="text"]:focus, .student-edit-profile input[type="password"]:focus, .teacher-edit-profile input[type="text"]:focus, .student-edit-profile input[type="password"]:focus {
   border-bottom: 2px solid #2691d9;
 }
+

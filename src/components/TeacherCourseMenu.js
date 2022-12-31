@@ -1,25 +1,63 @@
-import React from "react"
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react"
+import {useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const TeacherCourseMenu = () => {
     let navigate = useNavigate();
+    const location = useLocation();
+    const [course_list, setCourseList] = useState(location.state.course_list);
+    var access_token = location.state.access_token;
+    var username = location.state.username;
+    var fullname = location.state.fullname;
+    var account_type = location.state.account_type;
+
+    function toHomePage() {
+        navigate('/TeacherHP', {
+            state : {
+                access_token : access_token,
+                username : username,
+                fullname : fullname,
+                account_type : account_type 
+            },
+        });
+    }
+
+    async function viewCourseDetail(select_id) {
+        for (let course in course_list) {
+            if (course_list[course].id == select_id){
+                var response = await axios.get("http://35.247.128.143:8000/api/lectures", { headers: {"Authorization" : `Bearer ${access_token}`} });
+                var lecture_list = []
+                for (let lecture in response.data) {
+                    if (response.data[lecture].course_id == select_id) {
+                        lecture_list.push(response.data[lecture])
+                    }
+                }
+                navigate('/TeacherLectureMenu', {
+                    state : {
+                        access_token : access_token,
+                        username : username,
+                        fullname : fullname,
+                        account_type : account_type,
+                        course_list : course_list,
+                        course : course_list[course],
+                        lecture_list : lecture_list
+                    },
+                });
+            }
+        }
+    }
+
     return (
         <teachercoursemenu>
             <div className="teacher-course-menu">
                 <form>
                     <h1>Course MENU</h1>
-                    <form>
                         <div className="course-list">
-                            <input type="button" value="COURSE 1" onClick={() => {navigate('/TeacherLectureMenu')}}></input>
-                            <input type="button" value="COURSE 1" onClick={() => {navigate('/TeacherLectureMenu')}}></input>
-                            <input type="button" value="COURSE 1" onClick={() => {navigate('/TeacherLectureMenu')}}></input>
-                            <input type="button" value="COURSE 1" onClick={() => {navigate('/TeacherLectureMenu')}}></input>
-                            <input type="button" value="COURSE 1" onClick={() => {navigate('/TeacherLectureMenu')}}></input>
-                            <input type="button" value="COURSE 1" onClick={() => {navigate('/TeacherLectureMenu')}}></input>
-                            <input type="button" value="COURSE 1" onClick={() => {navigate('/TeacherLectureMenu')}}></input>
-                            <input type="button" value="COURSE 1" onClick={() => {navigate('/TeacherLectureMenu')}}></input>
-                            <input type="button" value="COURSE 1" onClick={() => {navigate('/TeacherLectureMenu')}}></input>
-                            <input type="button" value="COURSE 1" onClick={() => {navigate('/TeacherLectureMenu')}}></input>
+                            {course_list.map((item, index) => {
+                                return (
+                                    <input type="button" id={item.id} key={item.id} value={item.name} onClick={()=>{viewCourseDetail(item.id)}}></input>
+                                )
+                            })}
                         </div>
                         <table className="navigation-table">
                             <button className="add-course-button" onClick={() => {navigate('/AddCourse') }}>
@@ -29,18 +67,13 @@ const TeacherCourseMenu = () => {
                         <table className="navigation-table">
                             <tr>
                                 <td>
-                                    <button className="home-button" onClick={() => {navigate('/TeacherHP') }}>
-                                        HOME
-                                    </button>
+                                    <input className="home-button" type={"button"} onClick={toHomePage} value="HOME"></input>
                                 </td>
                                 <td>
-                                    <button className="back-button" onClick={() => {navigate('/TeacherHP')}}>
-                                        BACK
-                                    </button>
+                                <input className="back-button" type={"button"} onClick={toHomePage} value="BACK"></input>
                                 </td>
                             </tr>
                         </table>
-                    </form>
                 </form>
             </div>
         </teachercoursemenu>
