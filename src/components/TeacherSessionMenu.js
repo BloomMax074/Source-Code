@@ -1,10 +1,11 @@
+
 import React, { useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const TeacherSessionMenu = () => {
-    let navigate = useNavigate();
     const location = useLocation();
+    let navigate = useNavigate();
     var access_token = location.state.access_token;
     var username = location.state.username;
     var fullname = location.state.fullname;
@@ -27,6 +28,29 @@ const TeacherSessionMenu = () => {
         });
     }
 
+    function toAddSession(e){
+        e.preventDefault();
+        navigate('/AddSession',{
+            state:{
+             access_token : access_token,
+             username : username,
+             fullname : fullname,
+             account_type : account_type,
+             course : course,
+             course_list : course_list,
+             lecture : lecture,
+             lecture_list : lecture_list,
+             session_list:session_list
+            },
+
+        });
+    }
+    async function deleteSession(id){
+        var delapi="http://35.247.128.143:8000/api/sessions/";
+        var delapi=delapi+{id};
+        var response=await axios.delete(delapi,{ headers: {"Authorization" : `Bearer ${access_token}`} })
+        console.log(response);
+    }
     async function toLectureMenu(e) {
         var response = await axios.get("http://35.247.128.143:8000/api/lectures", { headers: {"Authorization" : `Bearer ${access_token}`} });
         var lecture_list = []
@@ -104,7 +128,7 @@ const TeacherSessionMenu = () => {
                         <table className="navigation-table">
                             <tr>
                                 <td>
-                                    <button className="add-session-button" onClick={() => {navigate('/AddSession') }}>
+                                    <button className="add-session-button" onClick={toAddSession}>
                                         ADD SESSION
                                     </button>
                                 </td>
@@ -127,6 +151,7 @@ const TeacherSessionMenu = () => {
                                 </tr>
                             </tbody> 
                         </table>
+                    
                 </form>
             </div>
     )

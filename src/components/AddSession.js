@@ -63,6 +63,7 @@ const AddSession = () => {
         
     }
     function goBack(){
+        
         navigate('/TeacherSessionMenu',{
             state:{
                 access_token:access_token,

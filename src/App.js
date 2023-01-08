@@ -15,6 +15,9 @@ import AddLecture from "./components/AddLecture";
 import StudentEditProfile from "./components/StudentEditProfile";
 import TeacherEditProfile from "./components/TeacherEditProfile";
 import TeacherSessionDetail from "./components/TeacherSessionDetail";
+import TeacherStudentMenu from "./components/TeacherStudentMenu";
+import TeacherStudentDetail from "./components/TeacherStudentDetail";
+import AddStudent from "./components/AddStudent";
 import "./index.css"
 
 const App = () => {
@@ -38,6 +41,9 @@ const App = () => {
             <Route exact path='/TeacherSessionDetail' element={<TeacherSessionDetail/>} />
             <Route exact path='/StudentEditProfile' element={<StudentEditProfile/>} />
             <Route exact path='/TeacherEditProfile' element={<TeacherEditProfile/>} />
+            <Route exact path='/TeacherStudentMenu' element={<TeacherStudentMenu/>} />
+            <Route exact path='/TeacherStudentDetail' element={<TeacherStudentDetail/>} />
+            <Route exact path='/AddStudent' element={<AddStudent/>} />
           </Routes>
       </Router>
     );
