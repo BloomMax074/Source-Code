@@ -11,6 +11,19 @@ const TeacherStudentMenu = () => {
     const account_type = location.state.account_type;
     const student_list = location.state.student_list;
 
+    async function AddStu(e){
+        e.preventDefault();
+        navigate('/AddStudent',{
+            state:{
+                access_token:access_token,
+                username:username,
+                fullname:fullname,
+                account_type:account_type,
+                student_list:student_list,
+            }
+        })
+        
+    }
 
     return (
             <div className="teacher-student-menu">
@@ -25,7 +38,7 @@ const TeacherStudentMenu = () => {
                             })}  
                         </div>
                         <table className="navigation-table">
-                            <button className="add-student-button" onClick={() => {navigate('/AddStudent') }}>
+                            <button className="add-student-button" onClick={AddStu}>
                                 ADD NEW STUDENT
                             </button>
                         </table>

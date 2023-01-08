@@ -48,7 +48,7 @@ const AddLecture = () => {
                                     id="description"
                                     placeholder="Enter Lecture Description" />
                             </div>
-                            <input className="add-lecture-button" type={"button"} value="ADD LECTURE"></input>
+                            <input className="add-lecture-button" type={"submit"} value="ADD LECTURE"></input>
                         </form>
                 </form>
             
