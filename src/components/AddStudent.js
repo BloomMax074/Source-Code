@@ -6,7 +6,6 @@ const AddStudent = () => {
     let navigate=useNavigate();
     const location=useLocation();
     const access_token=location.state.access_token;
-    
     const username = location.state.username;
     const fullname = location.state.fullname;
     const account_type = location.state.account_type;
@@ -47,7 +46,6 @@ const AddStudent = () => {
         })
     }
 
-  
     return (
             <div className="add-student">
                     <h1>Student Details</h1>

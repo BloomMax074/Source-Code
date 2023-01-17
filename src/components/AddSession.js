@@ -23,6 +23,7 @@ const AddSession = () => {
     const [sslecID,setSSlecID]=useState('');
     const [ssstart,setSSstart]=useState('');
     const [ssend,setSSend]=useState('');
+    
     async function handleCreateSession(e){
         e.preventDefault();
         console.log(lecture.id);
