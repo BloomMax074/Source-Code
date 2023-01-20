@@ -25,7 +25,7 @@ const StudentCourseMenu = () => {
     async function viewCourseDetail(select_id) {
         for (let course in course_list) {
             if (course_list[course].id == select_id){
-                var response = await axios.get("http://35.247.128.143:8000/api/lectures", { headers: {"Authorization" : `Bearer ${access_token}`} });
+                var response = await axios.get("http://35.240.197.121:80/api/lectures", { headers: {"Authorization" : `Bearer ${access_token}`} });
                 var lecture_list = []
                 for (let lecture in response.data) {
                     if (response.data[lecture].course_id == select_id) {

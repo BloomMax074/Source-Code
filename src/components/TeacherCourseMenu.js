@@ -5,7 +5,7 @@ import axios from "axios";
 const TeacherCourseMenu = () => {
     let navigate = useNavigate();
     const location = useLocation();
-    const [course_list, setCourseList] = useState(location.state.course_list);
+    const [course_list] = useState(location.state.course_list);
     var access_token = location.state.access_token;
     var username = location.state.username;
     var fullname = location.state.fullname;
@@ -24,11 +24,11 @@ const TeacherCourseMenu = () => {
 
     async function viewCourseDetail(select_id) {
         for (let course in course_list) {
-            if (course_list[course].id == select_id){
-                var response = await axios.get("http://35.247.128.143:8000/api/lectures", { headers: {"Authorization" : `Bearer ${access_token}`} });
+            if (course_list[course].id === select_id){
+                var response = await axios.get("http://35.240.197.121:80/api/lectures", { headers: {"Authorization" : `Bearer ${access_token}`} });
                 var lecture_list = []
                 for (let lecture in response.data) {
-                    if (response.data[lecture].course_id == select_id) {
+                    if (response.data[lecture].course_id === select_id) {
                         lecture_list.push(response.data[lecture])
                     }
                 }
@@ -48,7 +48,6 @@ const TeacherCourseMenu = () => {
     }
 
     return (
-        <teachercoursemenu>
             <div className="teacher-course-menu">
                 <form>
                     <h1>Course MENU</h1>
@@ -60,23 +59,30 @@ const TeacherCourseMenu = () => {
                             })}
                         </div>
                         <table className="navigation-table">
-                            <button className="add-course-button" onClick={() => {navigate('/AddCourse') }}>
-                                ADD NEW COURSE
-                            </button>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <button className="add-course-button" onClick={() => {navigate('/AddCourse') }}>
+                                            ADD NEW COURSE
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
                         <table className="navigation-table">
-                            <tr>
-                                <td>
-                                    <input className="home-button" type={"button"} onClick={toHomePage} value="HOME"></input>
-                                </td>
-                                <td>
-                                <input className="back-button" type={"button"} onClick={toHomePage} value="BACK"></input>
-                                </td>
-                            </tr>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <input className="home-button" type={"button"} onClick={toHomePage} value="HOME"></input>
+                                    </td>
+                                    <td>
+                                        <input className="back-button" type={"button"} onClick={toHomePage} value="BACK"></input>
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
                 </form>
             </div>
-        </teachercoursemenu>
     )
 }
 

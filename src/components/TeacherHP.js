@@ -24,7 +24,7 @@ const TeacherHP = () => {
 
     async function toStudentMenu(e) {
         e.preventDefault();
-        var response = await axios.get("http://35.247.128.143:8000/api/users/", { headers: { "Authorization" : `Bearer ${access_token}`} });
+        var response = await axios.get("http://35.240.197.121:80/api/users/", { headers: { "Authorization" : `Bearer ${access_token}`} });
         navigate('/TeacherStudentMenu', {
             state : {
                 access_token : access_token,
@@ -38,7 +38,7 @@ const TeacherHP = () => {
 
     async function toCourseMenu(e) {
         e.preventDefault();
-        var response = await axios.get("http://35.247.128.143:8000/api/courses", { headers: { "Authorization" : `Bearer ${access_token}`} });
+        var response = await axios.get("http://35.240.197.121:80/api/courses", { headers: { "Authorization" : `Bearer ${access_token}`} });
         navigate('/TeacherCourseMenu', { 
             state : {
                 access_token : access_token,
@@ -56,20 +56,22 @@ const TeacherHP = () => {
                     <h1>Welcome : TEACHER </h1>
                     <div className="info-dashboard">
                         <table>
-                            <tr>
-                                <th>Full Name</th>
-                                <td>{fullname}</td>
-                            </tr>
-                            <tr>
-                                <th>Username</th>
-                                <td>{username}</td>
-                            </tr>
-                            <tr>                       
-                                <th>Account Type</th>
-                                <td>{account_type}</td>
-                            </tr>
+                            <tbody>
+                                <tr>
+                                    <th>Full Name</th>
+                                    <td>{fullname}</td>
+                                </tr>
+                                <tr>
+                                    <th>Username</th>
+                                    <td>{username}</td>
+                                </tr>
+                                <tr>                       
+                                    <th>Account Type</th>
+                                    <td>{account_type}</td>
+                                </tr>
+                            </tbody>
                         </table>
-                        <input className="edit-button" type="button" value="EDIT PROFILE" onclick={toEditProfile}/>
+                        <input className="edit-button" type="button" value="EDIT PROFILE" onClick={toEditProfile}/>
                     </div>
                     <input className="student-list-button" type="button" value="STUDENT LIST" onClick={toStudentMenu}/>
                     <input className="view-course-button" type="button" onClick={toCourseMenu} value="VIEW COURSE" />

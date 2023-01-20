@@ -30,7 +30,7 @@ const StudentSessionDetail = () => {
 
     async function toSessionMenu(e) {
         e.preventDefault();
-        var api_path = "http://35.247.128.143:8000/api/courses/";
+        var api_path = "http://35.240.197.121:80/api/courses/";
         api_path = api_path + String(lecture.id) + "/sessions";
         var response = await axios.get(api_path, { headers: {"Authorization" : `Bearer ${access_token}`} });
         var session_list =[]
@@ -56,7 +56,7 @@ const StudentSessionDetail = () => {
 
     async function checkin(e) {
         e.preventDefault();
-        var api_path = "http://35.247.128.143:8000/api/sessions/";
+        var api_path = "http://35.240.197.121:80/api/sessions/";
         api_path = api_path + String(session.id) + "/checkin";
         console.log(api_path)
         console.log(access_token)

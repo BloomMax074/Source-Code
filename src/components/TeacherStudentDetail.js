@@ -1,10 +1,10 @@
-import React, { useState } from "react"
+import React  from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const TeacherStudentDetail = () => {
-        const location = useLocation();
         let navigate = useNavigate();
+        const location = useLocation();
         const access_token=location.state.access_token;
         const username = location.state.username;
         const fullname = location.state.fullname;
@@ -23,11 +23,30 @@ const TeacherStudentDetail = () => {
                 },
             });
         }
+
+        function toStudentList(e) {
+            e.preventDefault();
+            navigate('/TeacherStudentMenu', {
+                state : {
+                    access_token : access_token,
+                    username : username,
+                    fullname : fullname,
+                    account_type : account_type,
+                    student_list : student_list
+                },
+            });
+        }
+
+        async function toDeleteStudent(id){
+            var deleteapi="http://35.240.197.121:80/api/users/";
+            var deletestudentapi=deleteapi+{id};
+            var response = await axios.delete(deletestudentapi,{ headers: {"Authorization" : `Bearer ${access_token}`} })
+            console.log(response);           
+        }
     
         return (
-                <div className="teacher-session-detail">
-                    <form>
-                        
+                <div className="teacher-student-detail">
+                    <form>       
                         <table className="info-table">
                             <tbody>   
                                 <tr>
@@ -47,33 +66,37 @@ const TeacherStudentDetail = () => {
                                     <td>{student.account_type}</td>
                                 </tr>
                                 <tr>
-                                    <th>CREATED AT</th>
-                                    <td>NULL</td>
-                                </tr>
-                                <tr>
-                                    <th>UPDATED AT</th>
-                                    <td>NULL</td>
-                                </tr>
-                                <tr>
                                     <th>DEVICE</th>
                                     <td>NULL</td>
-                                </tr>
-                               
+                                </tr>                             
                             </tbody> 
                         </table>
                         <table className="navigation-table">
-                            <tr>
-                                <td>
-                                    <button className="home-button" onClick={() => {navigate('/TeacherHP') }}>
-                                        HOME
-                                    </button>
-                                </td>
-                                <td>
-                                    <button className="back-button" onClick={() => {navigate('/TeacherHP')}}>
-                                        BACK
-                                    </button>
-                                </td>
-                            </tr>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <button className="delete-student" onClick={ toDeleteStudent }>
+                                            DELETE STUDENT
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table className="navigation-table">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <button className="home-button" onClick={ toHomePage }>
+                                            HOME
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button className="back-button" onClick={ toStudentList }>
+                                            BACK
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
                     </form>
                 </div>

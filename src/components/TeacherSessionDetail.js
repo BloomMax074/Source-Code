@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react";
 import {useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -14,7 +14,6 @@ const TeacherSessionDetail = () => {
     var lecture = location.state.lecture;
     var lecture_list = location.state.lecture_list;
     var session = location.state.session;
-    var session_list = location.state.session_list;
 
     function toHomePage(e) {
         e.preventDefault();
@@ -30,12 +29,12 @@ const TeacherSessionDetail = () => {
 
     async function toSessionMenu(e) {
         e.preventDefault();
-        var api_path = "http://35.247.128.143:8000/api/courses/";
+        var api_path = "http://35.240.197.121:80/api/courses/";
         api_path = api_path + String(lecture.id) + "/sessions";
         var response = await axios.get(api_path, { headers: {"Authorization" : `Bearer ${access_token}`} });
         var session_list =[]
         for (let session in response.data) {
-            if (response.data[session].course_id == course.id && response.data[session].lecture_id == lecture.id) {
+            if (response.data[session].course_id === course.id && response.data[session].lecture_id === lecture.id) {
                 session_list.push(response.data[session])
             }
         }

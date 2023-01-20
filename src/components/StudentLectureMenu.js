@@ -16,7 +16,7 @@ const StudentLectureMenu = () => {
     async function viewLectureDetail(select_id) {
         for (let lecture in lecture_list) {
             if (lecture_list[lecture].id == select_id) {
-                var api_path = "http://35.247.128.143:8000/api/courses/";
+                var api_path = "http://35.240.197.121:80/api/courses/";
                 api_path = api_path + String(select_id) + "/sessions";
                 var response = await axios.get(api_path, { headers: {"Authorization" : `Bearer ${access_token}`} });
                 var session_list =[]
@@ -56,7 +56,7 @@ const StudentLectureMenu = () => {
 
     async function toCourseMenu(e) {
         e.preventDefault();
-        var response = await axios.get("http://35.247.128.143:8000/api/courses", { headers: {"Authorization" : `Bearer ${access_token}`} });
+        var response = await axios.get("http://35.240.197.121:80/api/courses", { headers: {"Authorization" : `Bearer ${access_token}`} });
         navigate('/StudentCourseMenu', {
             state : {
                 access_token : access_token,

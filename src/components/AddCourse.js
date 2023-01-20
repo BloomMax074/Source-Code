@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
 const AddCourse = () => {
+    let navigate=useNavigate();
     const location = useLocation();
     var access_token = location.state.access_token;
     var course_list = location.state.course_list;
@@ -19,13 +20,13 @@ const AddCourse = () => {
              name:coursename,
              description:coursedes,
         };
-        var response= await axios.post("http://35.247.128.143:8000/api/courses/",newCourse,{ headers: {"Authorization" : `Bearer ${access_token}`} })
+        var response= await axios.post("http://35.240.197.121:80/api/courses/",newCourse,{ headers: {"Authorization" : `Bearer ${access_token}`} })
         console.log(response);
     }
 
     async function onBack(e){
         e.preventDefault();
-        var response= await axios.get("http://35.247.128.143:8000/api/courses/",{ headers: { "Authorization" : `Bearer ${access_token}`} })
+        var response= await axios.get("http://35.240.197.121:80/api/courses/",{ headers: { "Authorization" : `Bearer ${access_token}`} })
         console.log(response);
         navigate('/TeacherCourseMenu',{
             state:{

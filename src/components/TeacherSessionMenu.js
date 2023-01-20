@@ -1,4 +1,3 @@
-
 import React, { useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -14,7 +13,7 @@ const TeacherSessionMenu = () => {
     var course_list = location.state.course_list;
     var lecture = location.state.lecture;
     var lecture_list = location.state.lecture_list;
-    const [session_list, setSessionList] = useState(location.state.session_list)
+    const [session_list] = useState(location.state.session_list)
     
     function toHomePage(e) {
         e.preventDefault();
@@ -45,17 +44,19 @@ const TeacherSessionMenu = () => {
 
         });
     }
+
     async function deleteSession(id){
-        var delapi="http://35.247.128.143:8000/api/sessions/";
+        var delapi="http://35.240.197.121:80/api/sessions/";
         var delapi=delapi+{id};
         var response=await axios.delete(delapi,{ headers: {"Authorization" : `Bearer ${access_token}`} })
         console.log(response);
     }
+
     async function toLectureMenu(e) {
-        var response = await axios.get("http://35.247.128.143:8000/api/lectures", { headers: {"Authorization" : `Bearer ${access_token}`} });
+        var response = await axios.get("http://35.240.197.121:80/api/lectures", { headers: {"Authorization" : `Bearer ${access_token}`} });
         var lecture_list = []
         for (let lecture in response.data) {
-            if (response.data[lecture].course_id == course.id) {
+            if (response.data[lecture].course_id === course.id) {
                 lecture_list.push(response.data[lecture])
             }
         }
@@ -74,7 +75,7 @@ const TeacherSessionMenu = () => {
 
     function viewSessionDetail(select_id) {
         for (let session in session_list) {
-            if (session_list[session].id == select_id) {
+            if (session_list[session].id === select_id) {
                 navigate('/TeacherSessionDetail', {
                     state : {
                         access_token : access_token,
@@ -126,18 +127,20 @@ const TeacherSessionMenu = () => {
                             })}  
                         </div>
                         <table className="navigation-table">
-                            <tr>
-                                <td>
-                                    <button className="add-session-button" onClick={toAddSession}>
-                                        ADD SESSION
-                                    </button>
-                                </td>
-                                <td>
-                                    <button className="delete-session-button" onClick={() => {navigate('/') }}>
-                                        DELETE SESSION
-                                    </button>
-                                </td>
-                            </tr>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <button className="add-session-button" onClick={toAddSession}>
+                                            ADD SESSION
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button className="delete-session-button" onClick={deleteSession}>
+                                            DELETE SESSION
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
                         <table className="navigation-table">
                             <tbody>  
@@ -150,8 +153,7 @@ const TeacherSessionMenu = () => {
                                     </td>
                                 </tr>
                             </tbody> 
-                        </table>
-                    
+                        </table>                   
                 </form>
             </div>
     )

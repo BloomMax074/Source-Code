@@ -2,11 +2,13 @@ import React,{useState} from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+
 const AddLecture = () => {
     const location = useLocation();
     var access_token = location.state.access_token;
     const [lecturename, setLectureName]=useState("");
     const [lecturedes, setLectureDes]=useState("");
+
     async function handleAddlecture(e)
     {
         e.preventDefault();
@@ -14,7 +16,7 @@ const AddLecture = () => {
              name:lecturename,
              description:lecturedes,
         };
-        var response= await axios.post("http://35.247.128.143:8000/api/lectures/",newLecture,{ headers: {"Authorization" : `Bearer ${access_token}`} })
+        var response= await axios.post("http://35.240.197.121:80/api/lectures/",newLecture,{ headers: {"Authorization" : `Bearer ${access_token}`} })
         console.log(response);
     }
 

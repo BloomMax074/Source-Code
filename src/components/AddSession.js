@@ -59,12 +59,12 @@ const AddSession = () => {
             start:ssstart,
             end:ssend,
         }
-        const response= await axios.post("http://35.247.128.143:8000/api/sessions/",ss,{ headers: {"Authorization" : `Bearer ${access_token}`} });
+        const response= await axios.post("http://35.240.197.121:80/api/sessions/",ss,{ headers: {"Authorization" : `Bearer ${access_token}`} });
         console.log(response);
         
     }
+
     function goBack(){
-        
         navigate('/TeacherSessionMenu',{
             state:{
                 access_token:access_token,
@@ -79,6 +79,7 @@ const AddSession = () => {
             }
         })
     }
+    
     return (
             <div className="add-session">
                     <h1>Session Details</h1>

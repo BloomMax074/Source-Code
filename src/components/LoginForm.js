@@ -12,9 +12,9 @@ function LoginForm () {
             username: username,
             password: password
         };
-        var response = await axios.post("http://35.247.128.143:8000/api/auth/login", newLogin);
+        var response = await axios.post("http://35.240.197.121:80/api/auth/login", newLogin);
         var access_token = response.data.access_token;
-        var response = await axios.get("http://35.247.128.143:8000/api/auth/me", { headers: {"Authorization" : `Bearer ${access_token}`} });
+        var response = await axios.get("http://35.240.197.121:80/api/auth/me", { headers: {"Authorization" : `Bearer ${access_token}`} });
         var account_type = response.data.account_type;
         var fullname = response.data.fullname
         if (account_type == 1) {

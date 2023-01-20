@@ -24,7 +24,7 @@ const StudentHP = () => {
     
     async function toCourseMenu(e) {
         e.preventDefault();
-        var response = await axios.get("http://35.247.128.143:8000/api/courses", { headers: {"Authorization" : `Bearer ${access_token}`} });
+        var response = await axios.get("http://35.240.197.121:80/api/courses", { headers: {"Authorization" : `Bearer ${access_token}`} });
         navigate('/StudentCourseMenu', {
             state : {
                 access_token : access_token,

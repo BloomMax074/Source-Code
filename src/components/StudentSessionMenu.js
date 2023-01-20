@@ -28,7 +28,7 @@ const StudentSessionMenu = () => {
     }
 
     async function toLectureMenu(e) {
-        var response = await axios.get("http://35.247.128.143:8000/api/lectures", { headers: {"Authorization" : `Bearer ${access_token}`} });
+        var response = await axios.get("http://35.240.197.121:80/api/lectures", { headers: {"Authorization" : `Bearer ${access_token}`} });
         var lecture_list = []
         for (let lecture in response.data) {
             if (response.data[lecture].course_id == course.id) {

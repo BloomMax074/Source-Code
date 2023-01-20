@@ -24,13 +24,13 @@ const AddStudent = () => {
             account_type:sacctype
 
         }
-        var response=await axios.post('http://35.247.128.143:8000/api/users/',post,{ headers: {"Authorization" : `Bearer ${access_token}`} })
+        var response=await axios.post('http://35.240.197.121:80/api/users/',post,{ headers: {"Authorization" : `Bearer ${access_token}`} })
         console.log(response);
     }
 
     async function onBack(e){
         e.preventDefault();
-        var response=await axios.get("http://35.247.128.143:8000/api/users/",{ headers: { "Authorization" : `Bearer ${access_token}`} })
+        var response=await axios.get("http://35.240.197.121:80/api/users/",{ headers: { "Authorization" : `Bearer ${access_token}`} })
         console.log(response);
        
         navigate('/TeacherStudentMenu',{
