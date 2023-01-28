@@ -13,8 +13,12 @@ const TeacherSessionMenu = () => {
     var course_list = location.state.course_list;
     var lecture = location.state.lecture;
     var lecture_list = location.state.lecture_list;
-    const [session_list] = useState(location.state.session_list)
-    
+    var session_list = location.state.session_list.data; 
+
+    async function editLecture(e){
+        e.preventDefault();
+    }
+ 
     function toHomePage(e) {
         e.preventDefault();
         navigate('/TeacherHP', {
@@ -43,13 +47,6 @@ const TeacherSessionMenu = () => {
             },
 
         });
-    }
-
-    async function deleteSession(id){
-        var delapi="http://35.240.197.121:80/api/sessions/";
-        var delapi=delapi+{id};
-        var response=await axios.delete(delapi,{ headers: {"Authorization" : `Bearer ${access_token}`} })
-        console.log(response);
     }
 
     async function toLectureMenu(e) {
@@ -119,12 +116,17 @@ const TeacherSessionMenu = () => {
                             </tr>
                         </tbody>
                     </table>
-                        <div className="session-list">
+                        <div className="course-list">
                             {session_list.map((item, index) => {
                                 return (
                                     <input type="button" id={item.id} key={item.id} value={item.name} onClick={()=>{viewSessionDetail(item.id)}}></input>
                                 )
                             })}  
+                        </div>
+                        <div>
+                        <button className="delete-session-button" onClick={editLecture}>
+                                        EDIT THIS LECTURE 
+                        </button>
                         </div>
                         <table className="navigation-table">
                             <tbody>
@@ -132,11 +134,6 @@ const TeacherSessionMenu = () => {
                                     <td>
                                         <button className="add-session-button" onClick={toAddSession}>
                                             ADD SESSION
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <button className="delete-session-button" onClick={deleteSession}>
-                                            DELETE SESSION
                                         </button>
                                     </td>
                                 </tr>
@@ -153,7 +150,8 @@ const TeacherSessionMenu = () => {
                                     </td>
                                 </tr>
                             </tbody> 
-                        </table>                   
+                        </table>
+                    
                 </form>
             </div>
     )

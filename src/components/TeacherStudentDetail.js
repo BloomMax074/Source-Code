@@ -9,7 +9,6 @@ const TeacherStudentDetail = () => {
         const username = location.state.username;
         const fullname = location.state.fullname;
         const account_type = location.state.account_type;
-        const student_list = location.state.student_list;
         const student=location.state.student;
 
         function toHomePage(e) {
@@ -24,24 +23,28 @@ const TeacherStudentDetail = () => {
             });
         }
 
-        function toStudentList(e) {
+        async function toStudentList(e) {
             e.preventDefault();
+            var response=await axios.get("http://35.240.197.121:80/api/users/",{ headers: { "Authorization" : `Bearer ${access_token}`} })
+            console.log(response);
             navigate('/TeacherStudentMenu', {
                 state : {
                     access_token : access_token,
                     username : username,
                     fullname : fullname,
                     account_type : account_type,
-                    student_list : student_list
+                    student_list : response.data
                 },
             });
         }
 
-        async function toDeleteStudent(id){
-            var deleteapi="http://35.240.197.121:80/api/users/";
-            var deletestudentapi=deleteapi+{id};
-            var response = await axios.delete(deletestudentapi,{ headers: {"Authorization" : `Bearer ${access_token}`} })
-            console.log(response);           
+        async function toDeleteStudent(e){
+            e.preventDefault();
+            const api1='http://35.240.197.121:80/api/users/'+String(student.id);
+            console.log(api1);
+            const response=await axios.delete(api1,{ headers: {"Authorization" : `Bearer ${access_token}`} });
+            console.log(response);
+            alert(response.data.data+' Successfully, you can push the BACK button to go back');
         }
     
         return (

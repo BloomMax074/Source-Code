@@ -68,7 +68,7 @@ const StudentEditProfile = () => {
                             <th>Account Type</th>
                             <td>{account_type}</td>
                         </tr>
-                        </tbody>
+                    </tbody>
                 </table>
                 
                 <label>Fullname:</label>

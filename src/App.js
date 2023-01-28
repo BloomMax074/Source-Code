@@ -18,6 +18,7 @@ import TeacherSessionDetail from "./components/TeacherSessionDetail";
 import TeacherStudentMenu from "./components/TeacherStudentMenu";
 import TeacherStudentDetail from "./components/TeacherStudentDetail";
 import AddStudent from "./components/AddStudent";
+import TeacherSessionUpdate from "./components/TeacherSessionUpdate";
 import "./index.css"
 
 const App = () => {
@@ -44,6 +45,7 @@ const App = () => {
             <Route exact path='/TeacherStudentMenu' element={<TeacherStudentMenu/>} />
             <Route exact path='/TeacherStudentDetail' element={<TeacherStudentDetail/>} />
             <Route exact path='/AddStudent' element={<AddStudent/>} />
+            <Route exact path='/TeacherSessionUpdate' element={<TeacherSessionUpdate/>} />
           </Routes>
       </Router>
     );

@@ -22,7 +22,7 @@ const TeacherStudentMenu = () => {
         });
     }
     
-    async function AddStu(e){
+    async function AddStudent(e){
         e.preventDefault();
         navigate('/AddStudent',{
             state:{
@@ -32,8 +32,7 @@ const TeacherStudentMenu = () => {
                 account_type:account_type,
                 student_list:student_list,
             },
-        });
-        
+        });        
     }
 
     function viewStudentDetail(select_id) {
@@ -54,10 +53,10 @@ const TeacherStudentMenu = () => {
     }
 
     return (
-            <div className="teacher-course-menu">
+            <div className="teacher-student-menu">
                 <form>
                     <h1>STUDENT MENU</h1>
-                        <div className="course-list">
+                        <div className="student-list">
                             {student_list.map((item, index) => {
                                 return (
                                     <input type="button" id={item.id} key={item.id} value={item.username} onClick={()=>{viewStudentDetail(item.id)}}></input>
@@ -68,7 +67,7 @@ const TeacherStudentMenu = () => {
                             <tbody>
                                 <tr>
                                     <td>
-                                        <button className="add-course-button" onClick={AddStu}>
+                                        <button className="add-course-button" onClick={ AddStudent }>
                                             ADD NEW STUDENT
                                         </button>
                                     </td>

@@ -14,17 +14,11 @@ const TeacherLectureMenu = () => {
     const [lecture_list] = useState(location.state.lecture_list);
 
     async function viewLectureDetail(select_id) {
+        const api='http://35.240.197.121:80/api/lectures/';
+        const api2=api+String(select_id)+'/sessions'   
+        const response=await axios.get(api2,{ headers: {"Authorization" : `Bearer ${access_token}`} })
         for (let lecture in lecture_list) {
             if (lecture_list[lecture].id === select_id) {
-                var api_path = "http://35.240.197.121:80/api/courses/";
-                api_path = api_path + String(select_id) + "/sessions";
-                var response = await axios.get(api_path, { headers: {"Authorization" : `Bearer ${access_token}`} });
-                var session_list =[]
-                for (let session in response.data) {
-                    if (response.data[session].course_id === course.id && response.data[session].lecture_id === select_id) {
-                        session_list.push(response.data[session])
-                    }
-                }
                 navigate('/TeacherSessionMenu', {
                     state : {
                         access_token : access_token,
@@ -35,11 +29,11 @@ const TeacherLectureMenu = () => {
                         course : course,
                         lecture_list : lecture_list,
                         lecture : lecture_list[lecture],
-                        session_list : session_list
+                        session_list : response.data
                     },
                 });
             }
-        }
+        }    
     }
 
     function toHomePage(e) {
@@ -64,6 +58,20 @@ const TeacherLectureMenu = () => {
                 fullname : fullname,
                 account_type : account_type,
                 course_list : response.data
+            },
+        });
+    }
+
+    function goToLecture(){      
+        navigate('/AddLecture',{
+            state:{
+                access_token:access_token,
+                username:username,
+                fullname:fullname,
+                account_type:account_type,
+                course:course,
+                course_list:course_list,
+                lecture_list:lecture_list,
             },
         });
     }
@@ -99,6 +107,17 @@ const TeacherLectureMenu = () => {
                             )
                         })}
                     </div>
+                    <table className="navigation-table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <button className="add-student-button" onClick={ goToLecture }>
+                                        ADD LECTURE
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <table className="navigation-table">
                         <tbody>
                             <tr>

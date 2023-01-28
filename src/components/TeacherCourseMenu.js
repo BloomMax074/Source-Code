@@ -9,7 +9,7 @@ const TeacherCourseMenu = () => {
     var access_token = location.state.access_token;
     var username = location.state.username;
     var fullname = location.state.fullname;
-    var account_type = location.state.account_type;
+    var account_type = location.state.account_type;   
 
     function toHomePage() {
         navigate('/TeacherHP', {
@@ -18,6 +18,19 @@ const TeacherCourseMenu = () => {
                 username : username,
                 fullname : fullname,
                 account_type : account_type 
+            },
+        });
+    }
+
+    async function toAddCourse(e) {
+        e.preventDefault();
+        navigate('/AddCourse', {
+            state : {
+                access_token : access_token,
+                username : username,
+                fullname : fullname,
+                account_type : account_type,
+                course_list : course_list
             },
         });
     }
@@ -62,7 +75,7 @@ const TeacherCourseMenu = () => {
                             <tbody>
                                 <tr>
                                     <td>
-                                        <button className="add-course-button" onClick={() => {navigate('/AddCourse') }}>
+                                        <button className="add-course-button" onClick={ toAddCourse }>
                                             ADD NEW COURSE
                                         </button>
                                     </td>

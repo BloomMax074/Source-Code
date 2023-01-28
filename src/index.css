@@ -148,7 +148,7 @@ body {
   transition: 0.5s;
 }
 
-.view-course-button:hover, .auto-check-in-button:hover, .edit-button:hover, .add-course-button:hover,
+.view-course-button:hover, .auto-check-in-button:hover, .edit-button:hover,
 .student-list-button:hover, .login-button:hover, .change-button:hover {
   background: #1770ac;
   transition: 0.5s;
@@ -201,7 +201,7 @@ body {
 }
 
 .student-course-menu, .student-lecture-menu, .student-session-menu, .student-session-detail,
-.teacher-course-menu, .teacher-lecture-menu, .teacher-session-menu, .teacher-student-menu, .teacher-student-detail {
+.teacher-course-menu, .teacher-lecture-menu, .teacher-session-menu, .teacher-student-menu, .teacher-student-detail, .teacher-session-detail {
   margin: auto;
   margin-top: 50px;
   margin-bottom: 50px;
@@ -212,19 +212,19 @@ body {
 }
 
 .student-course-menu h1, .student-lecture-menu h1, .student-session-menu h1, .student-session-detail h1,
-.teacher-course-menu h1, .teacher-lecture-menu h1, .teacher-session-menu h1, .teacher-student-menu h1 {
+.teacher-course-menu h1, .teacher-lecture-menu h1, .teacher-session-menu h1, .teacher-student-menu h1, .teacher-session-detail h1 {
   padding-top: 10px;
   padding-bottom: 10px;
   border-bottom: 1px solid silver;
   text-align: center;
 }
 
-.course-list, .lecture-list, .session-list, .student-list {
+.course-list, .lecture-list, .session-list {
   height: 350px;
   overflow-y: auto;
 }
 
-.course-list input[type="button"], .lecture-list input[type="button"], .session-list input[type="button"], .student-list input[type="button"] {
+.course-list input[type="button"], .lecture-list input[type="button"], .session-list input[type="button"] {
   margin-left: 25px;
   margin-bottom: 10px;
   width: 300px;
@@ -238,8 +238,32 @@ body {
   transition: 0.5s;
 }
 
-.course-list input[type="button"]:hover, .lecture-list input[type="button"]:hover, .session-list input[type="button"]:hover, .student-list input[type="button"]:hover {
+.course-list input[type="button"]:hover, .lecture-list input[type="button"]:hover, .session-list input[type="button"]:hover {
   background: #c33764;
+  transition: 0.5s;
+}
+
+.student-list {
+  height: 350px;
+  overflow-y: auto;
+}
+
+.student-list input[type="button"] {
+  margin-left: 25px;
+  margin-bottom: 10px;
+  width: 300px;
+  height: 40px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+  background: #ff0101;
+  color: white;
+  transition: 0.5s;
+}
+
+.student-list input[type="button"]:hover {
+  background: #2691d9;
   transition: 0.5s;
 }
 
@@ -250,7 +274,7 @@ body {
   table-layout: fixed;
 }
 
-.home-button, .add-lecture-button, .add-session-button, .delete-session-button, .back-button {
+.home-button, .add-session-button, .delete-session-button, .back-button, .add-course-button {
   width: 100%;
   border: 1px solid;
   background: #2691d9;
@@ -265,7 +289,7 @@ body {
   height: 50px;
 }
 
-.home-button:hover, .back-button:hover, .check-in-button:hover, .add-lecture-button:hover, .add-session-button:hover, .add-student-button:hover {
+.home-button:hover, .back-button:hover, .check-in-button:hover, .add-lecture-button:hover, .add-session-button:hover, .add-student-button:hover, .add-course-button:hover, .add-lecture-button:hover {
   background: #1770ac;
   transition: 0.5s;
 }
@@ -286,7 +310,7 @@ body {
   vertical-align: top;
 }
 
-.check-in-button, .add-course-button, .add-lecture-button, .add-session-button, .add-student-button {
+.check-in-button, .add-course-button, .add-lecture-button, .add-session-button, .add-student-button, .add-lecture-button {
   margin-left: 50%;
   transform: translate(-50%);
   padding: 15px 30px;

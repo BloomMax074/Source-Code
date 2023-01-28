@@ -41,7 +41,6 @@ const AddCourse = () => {
     }
     
     return (
-        <addcourse>
             <div className="add-course">
             <form onSubmit={handleAddCourse}>
                     <h1>Course Details</h1>
@@ -67,7 +66,6 @@ const AddCourse = () => {
                     </form>
             </form>
             </div>
-        </addcourse>
     )
 }
 

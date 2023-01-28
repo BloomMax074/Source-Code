@@ -22,26 +22,23 @@ const AddStudent = () => {
             fullname:sfullname,
             password:spass,
             account_type:sacctype
-
         }
         var response=await axios.post('http://35.240.197.121:80/api/users/',post,{ headers: {"Authorization" : `Bearer ${access_token}`} })
         console.log(response);
+        alert(response.data.data+' Successfully, Please Press Back');
     }
 
     async function onBack(e){
         e.preventDefault();
         var response=await axios.get("http://35.240.197.121:80/api/users/",{ headers: { "Authorization" : `Bearer ${access_token}`} })
         console.log(response);
-       
         navigate('/TeacherStudentMenu',{
             state:{
-                access_token:access_token,
-    
+            access_token:access_token,
             username:username,
             fullname:fullname,
             account_type:account_type,
-            student_list:response.data
-                
+            student_list:response.data     
             }
         })
     }
