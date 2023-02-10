@@ -24,6 +24,23 @@ const StudentHP = () => {
             },
         });
     }
+
+    async function toHistory(e) {
+        e.preventDefault();
+        var historyAPI = api_path + "/api/sessions/history";
+        var response = await axios.get(historyAPI, { headers: {"Authorization" : `Bearer ${access_token}`} })
+        navigate('/StudentHistory', {
+            state : {
+                access_token : access_token,
+                username : username,
+                fullname : fullname,
+                account_type : account_type,
+                api_path : api_path,
+                history_list : response.data.data
+            },
+        });
+
+    }
     
     async function toCourseMenu(e) {
         e.preventDefault();
@@ -65,7 +82,7 @@ const StudentHP = () => {
                     <input className="edit-button" type="button" value="EDIT PROFILE" onClick={toEditProfile}/>
                 </div>
                 <input className="medium-blue-button" type="button" value="ACTIVE SESSIONS"/>
-                <input className="medium-blue-button" type="button" value="HISTORY"/>
+                <input className="medium-blue-button" type="button" value="HISTORY" onClick={toHistory}/>
                 <input className="medium-blue-button" type="button" onClick={toCourseMenu} value="VIEW COURSES"/>
                 <input className="medium-red-button" type="button" onClick={() => {navigate('/LoginForm')}} value="LOGOUT"/>
             </form>

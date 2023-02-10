@@ -112,7 +112,7 @@ const Add = () => {
                 <label htmlFor="add-name">{type} Name:</label>
 			    <input type="text" placeholder={"Enter " + type + " Name"} id="add-name" onChange={(e)=>setNameAdd(e.target.value)}/>
 
-                <label htmlFor="add-description">{type} Name:</label>
+                <label htmlFor="add-description">{type} Description:</label>
 			    <input type="text" placeholder={"Enter " + type + " Description"} id="add-description" onChange={(e)=>setDescriptionAdd(e.target.value)}/>
 
                 <input className="big-blue-button" type="button" value={"CREATE " + type.toUpperCase()} onClick={submitChange} ></input>

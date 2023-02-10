@@ -88,7 +88,7 @@ const StudentLectureMenu = () => {
                         </tr>
                         <tr>
                             <th>CREATED AT</th>
-                            <td>{course.created_at}</td>
+                            <td>{course.created_at.slice(0, 10) + ", " + course.created_at.slice(11, 19) + "+00:00"}</td>
                         </tr>
                         <tr>
                             <th>UPDATED AT</th>

@@ -15,6 +15,11 @@ const TeacherLectureMenu = () => {
     var course_list = location.state.course_list;
     var lecture_list = location.state.lecture_list;
 
+    
+    if (course.updated_at != null) {
+        var course_updated_at = course.updated_at.slice(0,10)
+    }
+
     function toHomePage(e) {
         e.preventDefault();
         navigate('/TeacherHP', {
@@ -127,6 +132,29 @@ const TeacherLectureMenu = () => {
         }
     }
 
+    async function toClassList() {
+        var classListAPI = api_path + "/api/courses/" + course.id + "/enroll";
+        var response = await axios.get(classListAPI, { headers: { "Authorization" : `Bearer ${access_token}`} });
+        var class_list =[];
+        for (let x in response.data) {
+            if (response.data[x].role_id==1) {
+                class_list.push(response.data[x])
+            }
+        }
+        navigate('/ClassList', { 
+            state : {
+                access_token : access_token,
+                username : username,
+                fullname : fullname,
+                account_type : account_type,
+                api_path : api_path,
+                course : course,
+                course_list : course_list,
+                class_list : class_list
+            },
+        });
+    }
+
     return (
         <div className="container">
             <form>
@@ -142,12 +170,12 @@ const TeacherLectureMenu = () => {
                             <td>{course.description}</td>
                         </tr>
                         <tr>
-                            <th>CREATED AT</th>
-                            <td>{course.created_at}</td>
+                            <th>CREATED</th>
+                            <td>{course.created_at.slice(0,10)}</td>
                         </tr>
                         <tr>
-                            <th>UPDATED AT</th>
-                            <td>{course.updated_at}</td>
+                            <th>UPDATED</th>
+                            <td>{course_updated_at}</td>
                         </tr>
                         <tr>
                             <td colSpan={2}>
@@ -164,7 +192,7 @@ const TeacherLectureMenu = () => {
                     })}
                 </div>
                 
-                <input type="button" className="big-blue-button" value="CLASS LIST"></input>
+                <input type="button" className="big-blue-button" value="CLASS LIST" onClick={toClassList}></input>
                 
                 <table className="navigation-table">
                     <tbody>

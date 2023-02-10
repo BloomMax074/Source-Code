@@ -90,9 +90,23 @@ body {
   outline: none;
   transition: 0.1s;
   }
+  
+  .container select {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    height: 40px;
+    font-size: 16px;
+    border: 1px solid silver;
+    border-radius: 5px;
+  }
 
   .container input[type="text"]:focus, .container input[type="password"]:focus, .container input[type="int"]:focus {
     border-bottom: 2px solid #2691d9;
+  }
+
+  .container select:focus {
+    border: 2px solid #2691d9;
   }
 
   /* Info - Dashboard */
@@ -158,6 +172,23 @@ body {
   outline: none;
   transition: 0.5s;
   width: 95%;
+  }
+
+  .big-red-button {
+    margin-top: 10px;
+    margin-left: 50%;
+    transform: translate(-50%);
+    padding: 15px 30px;
+    border: 1px solid;
+    background: #d92326;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    transition: 0.5s;
+    width: 95%;
   }
 
   .medium-blue-button {
@@ -228,7 +259,7 @@ body {
   transition: 0.5s;
   }
 
-  .navigation-red-button:hover, .medium-red-button:hover {
+  .navigation-red-button:hover, .medium-red-button:hover, .big-red-button:hover {
     background: #b71f22;
     transition: 0.5s;
   }
@@ -291,28 +322,39 @@ body {
 
 
 
-  .student-list {
-    height: 350px;
+  .account-list {
+    height: 200px;
     overflow-y: auto;
+    margin: auto;
+    margin-bottom: 20px;
+    width: 400px;
+    padding: 10px;
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 10px;
   }
   
-  .student-list input[type="button"] {
+  .account-list input[type="button"] {
     margin-left: 25px;
     margin-bottom: 10px;
-    width: 300px;
+    width: 350px;
     height: 40px;
     border-radius: 10px;
     font-size: 16px;
     cursor: pointer;
     outline: none;
-    background: lightgrey;
-    color: #2691d9;
+    background: #ECECEC;
+    color: #1d2671;
+    border-color: #1d2671;
     transition: 0.5s;
     font-weight: bold;
+    text-align: start;
   }
   
-  .student-list input[type="button"]:hover {
-    color: #ff0101;
+  .account-list input[type="button"]:hover {
+    color: #2691d9;
+    border-color: #2691d9;
+    font-size: 18px;
     transition: 0.5s;
   }
   

@@ -85,20 +85,20 @@ const StudentSessionDetail = () => {
                             <td>{session.description}</td>
                         </tr>
                         <tr>
-                            <th>CREATED AT</th>
-                            <td>{session.created_at}</td>
+                            <th>CREATED</th>
+                            <td>{session.created_at.slice(0,10)}</td>
                         </tr>
                         <tr>
-                            <th>UPDATED AT</th>
+                            <th>UPDATED</th>
                             <td>{session.updated_at}</td>
                         </tr>
                         <tr>
                             <th>START</th>
-                            <td>{session.start}</td>
+                            <td>{session.start.slice(0,10) + ", " + session.start.slice(11,19)+" + 00:00"}</td>
                         </tr>
                         <tr>
                             <th>END</th>
-                            <td>{session.end}</td>
+                            <td>{session.end.slice(0,10) + ", " + session.end.slice(11,19)+" + 00:00"}</td>
                         </tr>
                     </tbody> 
                 </table>
