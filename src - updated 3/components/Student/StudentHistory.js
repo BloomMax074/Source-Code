@@ -1,6 +1,7 @@
 import React from "react"
 import {useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import {CSVLink} from "react-csv"
 
 const StudentHistory = () => {
     const location = useLocation();
@@ -10,33 +11,19 @@ const StudentHistory = () => {
     var fullname = location.state.fullname;
     var account_type = location.state.account_type;
     var api_path = location.state.api_path;
-    
-    var history_list = [
-        {
-            course_name : "Python",
-            lecture_name : "Lecture 1",
-            session_name : "Session 1",
-            created_at : "2023-01-18, 08:32:12+00:00"
-        },
-        {
-            course_name : "Python",
-            lecture_name : "Lecture 1",
-            session_name : "Session 2",
-            created_at : "2023-01-18, 10:28:29+00:00"
-        },
-        {
-            course_name : "Python",
-            lecture_name : "Lecture 2",
-            session_name : "Session 1",
-            created_at : "2023-01-19, 08:35:40+00:00"
-        },
-        {
-            course_name : "Python",
-            lecture_name : "Lecture 2",
-            session_name : "Session 2",
-            created_at : "2023-01-18, 10:27:01+00:00"
-        },
+    var history_list = location.state.history_list;
+
+    const csvLinkEl = React.createRef();
+    const headers=[
+        {label:"Course",key:"course_name"},
+        {label:"Lecture",key:"lecture_name"},
+        {label:"Session",key:"session_name"},
+        {label:"Time",key:"created_at"}
     ]
+    
+    function exportList() {
+        csvLinkEl.current.link.click();
+    }
 
     function toHomePage(e) {
         e.preventDefault();
@@ -77,12 +64,21 @@ const StudentHistory = () => {
                     <ul>
                     {history_list.map((item) => {
                         return (
-                            <li style={{marginBottom:"10px"}} key="item.course_name">{item.course_name} - {item.lecture_name} - {item.session_name} - {item.created_at}</li>  
+                            <li style={{marginBottom:"10px"}} key={item.id}>{item.course_name} / {item.lecture_name} / {item.session_name} / {item.created_at.slice(0, 10)}, {item.created_at.slice(11, 19)} + {item.created_at.slice(27, 32)}</li>  
                         )
                     })}
                     </ul>
                 </div>
-                <input type={"button"} className="big-blue-button" value={"EXPORT"}></input>
+                
+                <button type="button" className="big-blue-button" value="EXPORT" onClick={exportList}>
+                    EXPORT
+                    <CSVLink
+                        headers={headers}
+                        filename={username + "_" + fullname + "_History.csv"}
+                        data={history_list}
+                        ref={csvLinkEl}></CSVLink>
+                </button>
+
                 <table className="navigation-table">
                     <tbody>  
                         <tr>

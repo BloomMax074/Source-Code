@@ -16,6 +16,10 @@ const StudentSessionDetail = () => {
     var session = location.state.session;
     var api_path = location.state.api_path;
 
+    if (session.updated_at != null) {
+        var session_updated_at = session.updated_at.slice(0, 10);
+    }
+
     function toHomePage(e) {
         e.preventDefault();
         navigate('/StudentHP', {
@@ -90,7 +94,7 @@ const StudentSessionDetail = () => {
                         </tr>
                         <tr>
                             <th>UPDATED</th>
-                            <td>{session.updated_at}</td>
+                            <td>{session_updated_at}</td>
                         </tr>
                         <tr>
                             <th>START</th>

@@ -13,6 +13,10 @@ import TeacherCourseMenu from "./components/Teacher/TeacherCourseMenu";
 import TeacherLectureMenu from "./components/Teacher/TeacherLectureMenu";
 import TeacherSessionMenu from "./components/Teacher/TeacherSessionMenu";
 import TeacherSessionDetail from "./components/Teacher/TeacherSessionDetail";
+import CreateSession from "./components/util/CreateSession";
+
+
+
 import EditProfile from "./components/util/EditProfile";
 import Edit from "./components/Teacher/Edit";
 import Add from "./components/Teacher/Add";
@@ -51,6 +55,7 @@ const App = () => {
             <Route exact path='/ClassManage' element={<ClassManage/>} />
             <Route exact path='/EditAccount' element={<EditAccount/>} />
             <Route exact path='/CreateAccount' element={<CreateAccount/>} />
+            <Route exact path='/CreateSession' element={<CreateSession/>} />
           </Routes>
       </Router>
     );

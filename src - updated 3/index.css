@@ -101,12 +101,29 @@ body {
     border-radius: 5px;
   }
 
+  .container input[type="time"] {
+    width: 300px;
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 50px;
+    border: 1px solid silver;
+    border-radius: 5px;
+    text-align: center;
+    outline: none;
+    transition: 0.1s;
+  }
+
   .container input[type="text"]:focus, .container input[type="password"]:focus, .container input[type="int"]:focus {
     border-bottom: 2px solid #2691d9;
   }
 
-  .container select:focus {
+  .container select:focus, .container input[type="time"]:focus-visible {
     border: 2px solid #2691d9;
+  }
+
+  .container label {
+    font-weight: bold;
   }
 
   /* Info - Dashboard */

@@ -14,6 +14,10 @@ const StudentLectureMenu = () => {
     var api_path = location.state.api_path;
     var lecture_list = location.state.lecture_list;
 
+    if (course.updated_at != null) {
+        var course_updated_at = course.updated_at.slice(0, 10);
+    }
+
     async function viewLectureDetail(select_id) {
         for (let lecture in lecture_list) {
             if (lecture_list[lecture].id === select_id) {
@@ -87,19 +91,19 @@ const StudentLectureMenu = () => {
                             <td>{course.description}</td>
                         </tr>
                         <tr>
-                            <th>CREATED AT</th>
-                            <td>{course.created_at.slice(0, 10) + ", " + course.created_at.slice(11, 19) + "+00:00"}</td>
+                            <th>CREATED</th>
+                            <td>{course.created_at.slice(0, 10)}</td>
                         </tr>
                         <tr>
-                            <th>UPDATED AT</th>
-                            <td>{course.updated_at}</td>
+                            <th>UPDATED</th>
+                            <td>{course_updated_at}</td>
                         </tr>
                     </tbody>
                 </table>
                 <div className="list">
                     {lecture_list.map((item) => {
                         return (
-                            <input type="button" value={item.name} onClick={()=>{viewLectureDetail(item.id)}}></input>
+                            <input type="button" key={item.id} value={item.name} onClick={()=>{viewLectureDetail(item.id)}}></input>
                         )
                     })}
                 </div>

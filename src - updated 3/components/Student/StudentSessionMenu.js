@@ -15,6 +15,10 @@ const StudentSessionMenu = () => {
     var lecture_list = location.state.lecture_list;
     var session_list = location.state.session_list;
     var api_path = location.state.api_path;
+
+    if (lecture.updated_at != null) {
+        var lecture_updated_at = lecture.updated_at.slice(0, 10);
+    }
     
     function toHomePage(e) {
         e.preventDefault();
@@ -90,19 +94,19 @@ const StudentSessionMenu = () => {
                             <td>{lecture.description}</td>
                         </tr>
                         <tr>
-                            <th>CREATED AT</th>
-                            <td>{lecture.created_at}</td>
+                            <th>CREATED</th>
+                            <td>{lecture.created_at.slice(0, 10)}</td>
                         </tr>
                         <tr>
-                            <th>UPDATED AT</th>
-                            <td>{lecture.updated_at}</td>
+                            <th>UPDATED</th>
+                            <td>{lecture_updated_at}</td>
                         </tr>
                     </tbody>
                 </table>
                 <div className="list">
                     {session_list.map((item) => {
                         return (
-                            <input type="button" value={item.name} onClick={()=>{viewSessionDetail(item.id)}}></input>
+                            <input type="button" key={item.id} value={item.name} onClick={()=>{viewSessionDetail(item.id)}}></input>
                         )
                     })}
                 </div>

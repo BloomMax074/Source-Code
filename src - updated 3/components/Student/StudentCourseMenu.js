@@ -58,7 +58,7 @@ const StudentCourseMenu = () => {
                 <div className="list">
                     {course_list.map((item) => {
                         return (
-                            <input type="button" value={item.name} onClick={()=>{viewCourseDetail(item.id)}}></input>
+                            <input type="button" key={item.id} value={item.name} onClick={()=>{viewCourseDetail(item.id)}}></input>
                         )
                     })}
                 </div>
