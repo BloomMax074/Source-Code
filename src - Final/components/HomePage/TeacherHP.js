@@ -43,6 +43,7 @@ const TeacherHP = () => {
         e.preventDefault();
         var accountAPI = api_path + "/api/users";
         var response = await axios.get(accountAPI, { headers: { "Authorization" : `Bearer ${access_token}`} })
+        console.log(response.data)
         navigate('/AccountList', { 
             state : {
                 access_token : access_token,

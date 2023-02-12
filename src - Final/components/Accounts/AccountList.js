@@ -19,6 +19,7 @@ const AccountList = () => {
         {label:"Account Type",key:"account_type"}
     ]
     var account_list = location.state.account_list;
+    
     const [search_term, setSearchTerm] = useState("");
     
     
@@ -26,10 +27,10 @@ const AccountList = () => {
     var student_account_list = [];
 
     for (let account in account_list) {
-        if (account_list[account].account_type === "1") {
+        if (account_list[account].account_type === 1) {
             student_account_list.push(account_list[account]);
         }
-        else if (account_list[account].account_type === "2") {
+        else if (account_list[account].account_type === 2) {
             teacher_account_list.push(account_list[account]);
         }
     }

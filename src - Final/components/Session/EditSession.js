@@ -43,6 +43,7 @@ const EditSession = () => {
         if (session_time_start_edited !== "" || session_date_start_edited !== "") {
             if ((session_time_start_edited !== "" && session_date_start_edited === "") || (session_time_start_edited === "" && session_date_start_edited !== "")) {
                 alert("Start Time input incomplete!")
+                proceed = false
             } else if (session_time_start_edited !== "" && session_date_start_edited !== "") {
                 sessionUpdated.start = String(session_date_start_edited) + "T"+String(session_time_start_edited)+":00+07:00";
                 proceed = true
@@ -57,7 +58,7 @@ const EditSession = () => {
                 proceed = true;
             }
         }
-        if(proceed) {
+        if(proceed===true) {
             axios.patch(sessionAPI, sessionUpdated, { headers: {"Authorization" : `Bearer ${access_token}`} });
             alert("Session Updated")
             if (session_name_edited !== "") {
