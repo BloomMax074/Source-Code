@@ -85,18 +85,20 @@ const EditProfile = () => {
             <form>
                 <h1>{title} : PROFILE</h1>
                 <table className="info-dashboard">
-                    <tr>
-                        <th>Fullname</th>
-                        <td>{oldFullname}</td>
-                    </tr>
-                    <tr>
-                        <th>Username</th>
-                        <td>{username}</td>
-                    </tr>
-                    <tr>
-                        <th>Account Type</th>
-                        <td>{account_type}</td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <th>Fullname</th>
+                            <td>{oldFullname}</td>
+                        </tr>
+                        <tr>
+                            <th>Username</th>
+                            <td>{username}</td>
+                        </tr>
+                        <tr>
+                            <th>Account Type</th>
+                            <td>{account_type}</td>
+                        </tr>
+                    </tbody>
                 </table>
                 
                 <label>Fullname:</label>

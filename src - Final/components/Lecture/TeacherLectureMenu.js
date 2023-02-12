@@ -17,7 +17,7 @@ const TeacherLectureMenu = () => {
 
     
     if (course.updated_at != null) {
-        var course_updated_at = course.updated_at.slice(0,10)
+        var course_updated_at = String(new Date(course.updated_at))
     }
 
     function toHomePage(e) {
@@ -116,9 +116,9 @@ const TeacherLectureMenu = () => {
         if (window.confirm('Are you sure you wish to delete this course?')) {
             var delCourseAPI = api_path + "/api/courses/" + String(course.id);
             var response = await axios.delete(delCourseAPI, { headers: {"Authorization" : `Bearer ${access_token}`} })
-            alert(response.data.data)
+            alert("Course Deleted")
             var coursesAPI = api_path + "/api/courses";
-            var response = await axios.get(coursesAPI, { headers: { "Authorization" : `Bearer ${access_token}`} });
+            response = await axios.get(coursesAPI, { headers: { "Authorization" : `Bearer ${access_token}`} });
             navigate('/TeacherCourseMenu', { 
                 state : {
                     access_token : access_token,
@@ -135,12 +135,7 @@ const TeacherLectureMenu = () => {
     async function toClassList() {
         var classListAPI = api_path + "/api/courses/" + course.id + "/enroll";
         var response = await axios.get(classListAPI, { headers: { "Authorization" : `Bearer ${access_token}`} });
-        var class_list =[];
-        for (let x in response.data) {
-            if (response.data[x].role_id==1) {
-                class_list.push(response.data[x])
-            }
-        }
+        
         navigate('/ClassList', { 
             state : {
                 access_token : access_token,
@@ -150,7 +145,7 @@ const TeacherLectureMenu = () => {
                 api_path : api_path,
                 course : course,
                 course_list : course_list,
-                class_list : class_list
+                class_list : response.data
             },
         });
     }
@@ -171,7 +166,7 @@ const TeacherLectureMenu = () => {
                         </tr>
                         <tr>
                             <th>CREATED</th>
-                            <td>{course.created_at.slice(0,10)}</td>
+                            <td>{String(new Date(course.created_at))}</td>
                         </tr>
                         <tr>
                             <th>UPDATED</th>

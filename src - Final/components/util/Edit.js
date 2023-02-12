@@ -11,6 +11,7 @@ const Edit = () => {
     var account_type = location.state.account_type;
     var api_path = location.state.api_path;
     var type = location.state.type;
+    var course;
 
     const [name_placeholder, setNamePlaceholder]=useState(location.state.name_placeholder);
     const [description_placeholder, setDescriptionPlaceholder]=useState(location.state.description_placeholder);
@@ -19,11 +20,11 @@ const Edit = () => {
     const [description_edited, setDescriptionEdited]=useState("");
 
     if (type === "Course") {
-        var course = location.state.course;
+        course = location.state.course;
     }
 
     if (type === "Lecture") {
-        var course = location.state.course;
+        course = location.state.course;
         var course_list = location.state.course_list;
         var lecture = location.state.lecture;
     }
@@ -41,9 +42,11 @@ const Edit = () => {
     }
 
     async function goBack() {
+        var response;
+        var lecturesAPI;
         if (type === "Course") {
-            var lecturesAPI = api_path + "/api/lectures";
-            var response = await axios.get(lecturesAPI, { headers: {"Authorization" : `Bearer ${access_token}`} });
+            lecturesAPI = api_path + "/api/lectures";
+            response = await axios.get(lecturesAPI, { headers: {"Authorization" : `Bearer ${access_token}`} });
             var lecture_list = []
             for (let lecture in response.data) {
                 if (response.data[lecture].course_id === course.id) {
@@ -52,7 +55,7 @@ const Edit = () => {
             }
 
             var coursesAPI = api_path + "/api/courses";
-            var response = await axios.get(coursesAPI, { headers: {"Authorization" : `Bearer ${access_token}`} });
+            response = await axios.get(coursesAPI, { headers: {"Authorization" : `Bearer ${access_token}`} });
             for (let ocourse in response.data) {
                 if (response.data[ocourse].id === course.id) {
                     navigate('/TeacherLectureMenu', {
@@ -72,8 +75,8 @@ const Edit = () => {
         }
 
         if (type === "Lecture") {
-            var lecturesAPI = api_path + "/api/lectures";
-            var response = await axios.get(lecturesAPI, { headers: {"Authorization" : `Bearer ${access_token}`} });
+            lecturesAPI = api_path + "/api/lectures";
+            response = await axios.get(lecturesAPI, { headers: {"Authorization" : `Bearer ${access_token}`} });
             for (let x in response.data) {
                 if (response.data[x].id === lecture.id) {
                     lecture = response.data[x];
@@ -81,7 +84,7 @@ const Edit = () => {
             }
 
             var sessionAPI = api_path + "/api/courses/" + String(course.id) + "/sessions"
-            var response = await axios.get(sessionAPI, { headers: {"Authorization" : `Bearer ${access_token}`} });
+            response = await axios.get(sessionAPI, { headers: {"Authorization" : `Bearer ${access_token}`} });
             var session_list = [];
             for (let session in response.data) {
                 if (response.data[session].lecture_id === lecture.id) {
@@ -106,13 +109,14 @@ const Edit = () => {
     }
 
     async function submitChange() {
+        var response;
         if (type === "Course") {
             var changeCourseAPI = api_path + "/api/courses/" + course.id;
             if (name_edited.length === 0) {
                 const course_edited = {
                     description : description_edited
                 }
-                var response = await axios.patch(changeCourseAPI, course_edited, { headers: {"Authorization" : `Bearer ${access_token}`} })
+                response = await axios.patch(changeCourseAPI, course_edited, { headers: {"Authorization" : `Bearer ${access_token}`} })
                 setDescriptionPlaceholder(description_edited);
                 alert(response.data.data);
             }
@@ -120,7 +124,7 @@ const Edit = () => {
                 const course_edited = {
                     name : name_edited
                 }
-                var response = await axios.patch(changeCourseAPI, course_edited, { headers: {"Authorization" : `Bearer ${access_token}`} })
+                response = await axios.patch(changeCourseAPI, course_edited, { headers: {"Authorization" : `Bearer ${access_token}`} })
                 setNamePlaceholder(name_edited)
                 alert(response.data.data);
             }
@@ -131,7 +135,7 @@ const Edit = () => {
                 }
                 setNamePlaceholder(name_edited);
                 setDescriptionPlaceholder(description_edited);
-                var response = await axios.patch(changeCourseAPI, course_edited, { headers: {"Authorization" : `Bearer ${access_token}`} })
+                response = await axios.patch(changeCourseAPI, course_edited, { headers: {"Authorization" : `Bearer ${access_token}`} })
                 alert(response.data.data);
             }
         }
@@ -142,7 +146,7 @@ const Edit = () => {
                 const lecture_edited = {
                     description : description_edited
                 }
-                var response = await axios.patch(changeLectureAPI, lecture_edited, { headers: {"Authorization" : `Bearer ${access_token}`} })
+                response = await axios.patch(changeLectureAPI, lecture_edited, { headers: {"Authorization" : `Bearer ${access_token}`} })
                 setDescriptionPlaceholder(description_edited);
                 alert(response.data.data);
             }
@@ -150,7 +154,7 @@ const Edit = () => {
                 const lecture_edited = {
                     name : name_edited
                 }
-                var response = await axios.patch(changeLectureAPI, lecture_edited, { headers: {"Authorization" : `Bearer ${access_token}`} })
+                response = await axios.patch(changeLectureAPI, lecture_edited, { headers: {"Authorization" : `Bearer ${access_token}`} })
                 setNamePlaceholder(name_edited)
                 alert(response.data.data);
             }
@@ -161,7 +165,7 @@ const Edit = () => {
                 }
                 setNamePlaceholder(name_edited);
                 setDescriptionPlaceholder(description_edited);
-                var response = await axios.patch(changeLectureAPI, lecture_edited, { headers: {"Authorization" : `Bearer ${access_token}`} })
+                response = await axios.patch(changeLectureAPI, lecture_edited, { headers: {"Authorization" : `Bearer ${access_token}`} })
                 alert(response.data.data);
             }
 

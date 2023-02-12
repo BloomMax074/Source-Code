@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function LoginForm () {
@@ -23,12 +23,12 @@ function LoginForm () {
             alert(err.response.data.detail)
         }
         
-        if (access_token != "") {
+        if (access_token !== "") {
             var meAPI = api_path + "/api/auth/me";
-            var response = await axios.get(meAPI, { headers: {"Authorization" : `Bearer ${access_token}`} });
+            response = await axios.get(meAPI, { headers: {"Authorization" : `Bearer ${access_token}`} });
             var account_type = response.data.account_type;
             var fullname = response.data.fullname
-            if (account_type == 1) {
+            if (account_type === 1) {
                 navigate('/StudentHP', {
                     state : {
                         access_token : access_token,
@@ -39,7 +39,7 @@ function LoginForm () {
                     },
                 });
             }
-            else if (account_type == 2) {
+            else if (account_type === 2) {
                 navigate('/TeacherHP', {
                     state : {
                         access_token : access_token,

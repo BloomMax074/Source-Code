@@ -13,11 +13,9 @@ const EditAccount = () => {
     var api_path = location.state.api_path;
     var account = location.state.account;
 
+    var isMyAccount = false
     if (my_id === account.id) {
-        var isMyAccount = true;
-    }
-    else {
-        var isMyAccount = false;
+        isMyAccount = true;
     }
     
     const [fullname_edited, setFullnameEdited] = useState("")
@@ -25,6 +23,7 @@ const EditAccount = () => {
 
     const [fullname_placeholder, setFullnamePlaceholder] = useState(account.fullname)
     const [username_placeholder, setUsernamePlaceholder] = useState(account.username)
+    const [account_type_placeholder, setAccountTypePlaceholder] = useState(account.account_type)
 
     function toHomePage() {
         navigate('/TeacherHP', {
@@ -39,15 +38,30 @@ const EditAccount = () => {
     }
     
     function onSubmit() {
-        if (isMyAccount) {
-            if (document.getElementById("edit-account-type").value != account_type) {
-                alert("You cannot change your own account type");
-            }
-            else {
-
-            }
+        if (isMyAccount && document.getElementById("edit-account-type").value !== account_type) {
+            alert("You cannot change your own account type");
         }
-
+        else {
+            var accountUpdated = {};
+            if (fullname_edited !== "") {
+                accountUpdated.fullname = fullname_edited
+                setFullnamePlaceholder(fullname_edited)
+            }
+            if (username_edited !== "") {
+                accountUpdated.username = username_edited
+                setUsernamePlaceholder(username_edited)
+            }
+            if (document.getElementById("edit-account-type").value !== account.account_type) {
+                accountUpdated.account_type = document.getElementById("edit-account-type").value
+                setAccountTypePlaceholder(document.getElementById("edit-account-type").value)
+            }
+            var accountUpdateAPI = api_path + "/api/users/" + String(account.id)
+            axios.patch(accountUpdateAPI, accountUpdated, { headers: {"Authorization" : `Bearer ${access_token}`} })
+            alert("Account Updated")
+            document.getElementById("edit-fullname").value="";
+            document.getElementById("edit-username").value="";
+            document.getElementById("edit-account-type").value=account_type_placeholder;
+        }
     }
 
     async function deleteAccount() {
@@ -100,18 +114,20 @@ const EditAccount = () => {
             <form>
                 <h1>MANAGE ACCOUNT</h1>
                 <table className="info-dashboard">
-                    <tr>
-                        <th>Fullname</th>
-                        <td>{account.fullname}</td>
-                    </tr>
-                    <tr>
-                        <th>Username</th>
-                        <td>{account.username}</td>
-                    </tr>
-                    <tr>
-                        <th>Account Type</th>
-                        <td>{account.account_type}</td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <th>Fullname</th>
+                            <td>{fullname_placeholder}</td>
+                        </tr>
+                        <tr>
+                            <th>Username</th>
+                            <td>{username_placeholder}</td>
+                        </tr>
+                        <tr>
+                            <th>Account Type</th>
+                            <td>{account_type_placeholder}</td>
+                        </tr>
+                    </tbody>
                 </table>
 
                 <label htmlFor="edit-fullname">Fullname:</label>
@@ -121,7 +137,7 @@ const EditAccount = () => {
 			    <input type="text" placeholder={username_placeholder} id="edit-username" onChange={(e)=>{setUsernameEdited(e.target.value)}}/>
                 
                 <label htmlFor="edit-account-type">Account Type:</label>
-                <select id="edit-account-type" defaultValue={account.account_type}>
+                <select id="edit-account-type" defaultValue={account_type_placeholder}>
                     <option value={1}>1. Student Account</option>
                     <option value={2}>2. Teacher Account</option>
                 </select>

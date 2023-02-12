@@ -1,6 +1,5 @@
 import React from "react"
 import {useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
 import {CSVLink} from "react-csv"
 
 const StudentHistory = () => {
@@ -64,7 +63,7 @@ const StudentHistory = () => {
                     <ul>
                     {history_list.map((item) => {
                         return (
-                            <li style={{marginBottom:"10px"}} key={item.id}>{item.course_name} / {item.lecture_name} / {item.session_name} / {item.created_at.slice(0, 10)}, {item.created_at.slice(11, 19)} + {item.created_at.slice(27, 32)}</li>  
+                            <li style={{marginBottom:"10px"}} key={item.id}>{item.course_name} / {item.lecture_name} / {item.session_name} / {String(new Date(item.created_at))}</li>  
                         )
                     })}
                     </ul>

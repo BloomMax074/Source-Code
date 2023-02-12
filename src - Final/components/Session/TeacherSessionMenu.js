@@ -17,7 +17,7 @@ const TeacherSessionMenu = () => {
     var session_list = location.state.session_list;
 
     if (lecture.updated_at != null) {
-        var lecture_updated_at = lecture.updated_at.slice(0,10)
+        var lecture_updated_at = String(new Date(lecture.updated_at))
     }
 
     function toHomePage(e) {
@@ -160,7 +160,7 @@ const TeacherSessionMenu = () => {
                         </tr>
                         <tr>
                             <th>CREATED</th>
-                            <td>{lecture.created_at.slice(0, 10)}</td>
+                            <td>{String(new Date(lecture.created_at))}</td>
                         </tr>
                         <tr>
                             <th>UPDATED</th>

@@ -28,9 +28,11 @@ const Add = () => {
     }
 
     async function goBack() {
+        var response;
+        var coursesAPI
         if (type === "Course") {
-            var coursesAPI = api_path + "/api/courses";
-            var response = await axios.get(coursesAPI, { headers: { "Authorization" : `Bearer ${access_token}`} });
+            coursesAPI = api_path + "/api/courses";
+            response = await axios.get(coursesAPI, { headers: { "Authorization" : `Bearer ${access_token}`} });
             navigate('/TeacherCourseMenu', { 
                 state : {
                     access_token : access_token,
@@ -46,7 +48,7 @@ const Add = () => {
         if (type === "Lecture") {
             var course = location.state.course;
             var lecturesAPI = api_path + "/api/lectures";
-            var response = await axios.get(lecturesAPI, { headers: {"Authorization" : `Bearer ${access_token}`} });
+            response = await axios.get(lecturesAPI, { headers: {"Authorization" : `Bearer ${access_token}`} });
             var lecture_list = []
             for (let lecture in response.data) {
                 if (response.data[lecture].course_id === course.id) {
@@ -54,8 +56,8 @@ const Add = () => {
                 }
             }
 
-            var coursesAPI = api_path + "/api/courses";
-            var response = await axios.get(coursesAPI, { headers: {"Authorization" : `Bearer ${access_token}`} });
+            coursesAPI = api_path + "/api/courses";
+            response = await axios.get(coursesAPI, { headers: {"Authorization" : `Bearer ${access_token}`} });
             for (let ocourse in response.data) {
                 if (response.data[ocourse].id === course.id) {
                     navigate('/TeacherLectureMenu', {
@@ -75,14 +77,14 @@ const Add = () => {
     }
 
     async function submitChange() {
-        
+        var response;
         if (type === "Course") {
             var addCourseAPI = api_path + "/api/courses";
             const newCourse={
                 name : name_add,
                 description : description_add
             }
-            var response = await axios.post(addCourseAPI, newCourse, { headers: {"Authorization" : `Bearer ${access_token}`} })
+            response = await axios.post(addCourseAPI, newCourse, { headers: {"Authorization" : `Bearer ${access_token}`} })
             document.getElementById('add-name').value = '';
             document.getElementById('add-description').value = '';
             alert(response.data.data)
@@ -96,7 +98,7 @@ const Add = () => {
                 name : name_add,
                 description : description_add
             }
-            var response = await axios.post(addLectureAPI, newLecture, { headers: {"Authorization" : `Bearer ${access_token}`} })
+            response = await axios.post(addLectureAPI, newLecture, { headers: {"Authorization" : `Bearer ${access_token}`} })
             document.getElementById('add-name').value = '';
             document.getElementById('add-description').value = '';
             alert(response.data.data)

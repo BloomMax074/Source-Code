@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import {useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import moment, * as moments from 'moment';
 
 const CreateSession = () => {
     let navigate=useNavigate();
@@ -15,12 +14,13 @@ const CreateSession = () => {
     var course_list = location.state.course_list;
     var lecture = location.state.lecture;
     var lecture_list = location.state.lecture_list;
-    var session_list=location.state.session_list;
 
     const [session_name_created, setSessionNameCreated]=useState("");
     const [session_description_created, setSessionDescriptionCreated]=useState("");
     const [session_time_start, setSessionTimeStart]=useState("");
     const [session_time_end, setSessionTimeEnd]=useState("");
+    const [session_date_start, setSessionDateStart]=useState("");
+    const [session_date_end, setSessionDateEnd]=useState("");
 
     
     function toHomePage() {
@@ -35,13 +35,48 @@ const CreateSession = () => {
         });
     }
 
-    function goBack() {
+    async function goBack() {
+        var sessionsAPI = api_path + "/api/courses/" + String(course.id) + "/sessions";
+        var response = await axios.get(sessionsAPI, { headers: {"Authorization" : `Bearer ${access_token}`} });
+        var session_list =[]
+        for (let session in response.data) {
+            if (response.data[session].course_id === course.id && response.data[session].lecture_id === lecture.id) {
+                session_list.push(response.data[session]);
+            }
+        }
 
+        navigate('/TeacherSessionMenu', {
+            state : {
+                access_token : access_token,
+                username : username,
+                fullname : fullname,
+                account_type : account_type,
+                api_path : api_path,
+                course_list : course_list,
+                course : course,
+                lecture_list : lecture_list,
+                lecture : lecture,
+                session_list : session_list
+            },
+        });
     }
     
     function createSession() {
-        console.log(session_time_start)
-        console.log(session_time_end)
+        if (session_time_start === "" || session_date_start === "" || session_time_end === "" || session_date_end === "" || session_name_created === "") {
+            alert("Name, Start Time & End Time are required!");
+        }
+        else {
+            var sessionAPI = api_path + "/api/sessions"
+            var newSession = {
+                lecture_id : lecture.id,
+                name : session_name_created,
+                description : session_description_created,
+                start : String(session_date_start) + "T"+String(session_time_start)+":00+07:00",
+                end : String(session_date_end) + "T"+String(session_time_end)+":00+07:00",
+            }
+            axios.post(sessionAPI, newSession, { headers: {"Authorization" : `Bearer ${access_token}`} })
+            alert("Session Created")
+        }    
     }
 
     return (
@@ -62,7 +97,10 @@ const CreateSession = () => {
                                 <label htmlFor="create-session-start">Start Time:</label>
                             </td>
                             <td>
-                                <input type="time" placeholder={"Start Time"} id="create-session-start" required onChange={(e)=>{setSessionTimeStart(e.target.value)}}></input>
+                                <input type="time" id="create-session-start" required onChange={(e)=>{setSessionTimeStart(e.target.value)}}></input>
+                            </td>
+                            <td>
+                                <input type="date" id="create-session-start-date" required onChange={(e)=>{setSessionDateStart(e.target.value)}}></input>
                             </td>
                         </tr>
                         <tr>
@@ -70,7 +108,10 @@ const CreateSession = () => {
                                 <label htmlFor="create-session-end">End Time:</label>
                             </td>
                             <td>
-                                <input type="time" placeholder={"End Time"} id="create-session-end" required onChange={(e)=>{setSessionTimeEnd(e.target.value)}}></input>
+                                <input type="time" id="create-session-end" required onChange={(e)=>{setSessionTimeEnd(e.target.value)}}></input>
+                            </td>
+                            <td>
+                                <input type="date" id="create-session-end-date" required onChange={(e)=>{setSessionDateEnd(e.target.value)}}></input>
                             </td>
                         </tr>
                     </tbody>

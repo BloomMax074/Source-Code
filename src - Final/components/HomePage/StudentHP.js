@@ -57,6 +57,22 @@ const StudentHP = () => {
             },
         });
     }
+
+    async function toActiveSession(e) {
+        e.preventDefault();
+        var activeSessionAPI = api_path + "/api/sessions/active-sessions"
+        var response = await axios.get(activeSessionAPI, { headers: {"Authorization" : `Bearer ${access_token}`} })
+        navigate('/ActiveSession', {
+            state : {
+                access_token : access_token,
+                username : username,
+                fullname : fullname,
+                account_type : account_type,
+                api_path : api_path,
+                active_session_list : response.data.data
+            },
+        });
+    }
     
     return (
         <div className="container">
@@ -81,7 +97,7 @@ const StudentHP = () => {
                     </table>
                     <input className="edit-button" type="button" value="EDIT PROFILE" onClick={toEditProfile}/>
                 </div>
-                <input className="medium-blue-button" type="button" value="ACTIVE SESSIONS"/>
+                <input className="medium-blue-button" type="button" value="ACTIVE SESSIONS" onClick={toActiveSession}/>
                 <input className="medium-blue-button" type="button" value="HISTORY" onClick={toHistory}/>
                 <input className="medium-blue-button" type="button" onClick={toCourseMenu} value="VIEW COURSES"/>
                 <input className="medium-red-button" type="button" onClick={() => {navigate('/LoginForm')}} value="LOGOUT"/>

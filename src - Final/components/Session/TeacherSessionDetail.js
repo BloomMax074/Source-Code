@@ -17,8 +17,12 @@ const TeacherSessionDetail = () => {
     var session_list = location.state.session_list;
     var session = location.state.session;
 
+    var date_created = String(new Date(session.created_at));
+    var date_start = String(new Date(session.start));
+    var date_end = String(new Date(session.end));
+
     if (session.updated_at != null) {
-        var session_updated_at = session.updated_at.slice(0,10);
+        var date_updated = String(new Date(session.updated_at))
     }
 
     function toHomePage(e) {
@@ -64,7 +68,7 @@ const TeacherSessionDetail = () => {
         if (window.confirm('Are you sure you wish to delete this session?')) {
             var deleteSessionAPI = api_path + "/api/sessions/" + String(session.id)
             try {
-                var response=await axios.delete(deleteSessionAPI,{ headers: {"Authorization" : `Bearer ${access_token}`} });
+                axios.delete(deleteSessionAPI,{ headers: {"Authorization" : `Bearer ${access_token}`} });
                 alert("Session Deleted.")
 
                 var sessionsAPI = api_path + "/api/courses/" + String(course.id) + "/sessions";
@@ -96,16 +100,59 @@ const TeacherSessionDetail = () => {
         }
     }
 
+    async function toAttendee() {
+        var attendeeAPI = api_path + "/api/sessions/" + String(session.id) + "/attendees";
+        var response = await axios.get(attendeeAPI, { headers: {"Authorization" : `Bearer ${access_token}`} });
+        navigate('/Attendee', {
+            state : {
+                access_token : access_token,
+                username : username,
+                fullname : fullname,
+                account_type : account_type,
+                api_path : api_path,
+                course_list : course_list,
+                course : course,
+                lecture_list : lecture_list,
+                lecture : lecture,
+                session_list : session_list,
+                session : session,
+                attendee_list : response.data.data
+            },
+        });
+    }
+
     async function endSession() {
         if (window.confirm('Are you sure you wish to end this session?')) {
             var endSessionAPI = api_path + "/api/sessions/"+ String(session.id) +"/end"
             try {
-                var response = await axios.patch(endSessionAPI, {}, { headers: {"Authorization" : `Bearer ${access_token}`} });
-                alert(response.data.data)
+                axios.patch(endSessionAPI, {}, { headers: {"Authorization" : `Bearer ${access_token}`} });
+                alert("Session Ended!")
             } catch(err) {
                 console.log(err)
             }
         }
+    }
+
+    function toEditSession() {
+        navigate('/EditSession', {
+            state : {
+                access_token : access_token,
+                username : username,
+                fullname : fullname,
+                account_type : account_type,
+                api_path : api_path,
+                course_list : course_list,
+                course : course,
+                lecture_list : lecture_list,
+                lecture : lecture,
+                session_list : session_list,
+                session : session,
+                name_placeholder : session.name,
+                description_placeholder : session.description,
+                start_placeholder : session.start,
+                end_placeholder : session.end
+            },
+        });
     }
 
     
@@ -127,29 +174,29 @@ const TeacherSessionDetail = () => {
                         </tr>
                         <tr>
                             <th>CREATED</th>
-                            <td>{session.created_at.slice(0,10)}</td>
+                            <td>{date_created}</td>
                         </tr>
                         <tr>
                             <th>UPDATED</th>
-                            <td>{session_updated_at}</td>
+                            <td>{date_updated}</td>
                         </tr>
                         <tr>
                             <th>START</th>
-                            <td>{session.start.slice(0,10) + ", " + session.start.slice(11,19)}</td>
+                            <td>{date_start}</td>
                         </tr>
                         <tr>
                             <th>END</th>
-                            <td>{session.end.slice(0,10) + ", " + session.end.slice(11,19)}</td>
+                            <td>{date_end}</td>
                         </tr>
                         <tr>
                             <td colSpan={2}>
-                                <input type={"button"} className="edit-button" value="Edit" ></input>
+                                <input type={"button"} className="edit-button" value="Edit" onClick={toEditSession}></input>
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 
-                <input type={"button"} className="big-blue-button" value={"ATENDEE"}></input>
+                <input type={"button"} className="big-blue-button" value={"ATTENDEE"} onClick={toAttendee}></input>
                 
                 <table className="navigation-table">
                     <tbody>

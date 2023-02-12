@@ -42,6 +42,21 @@ const CreateAccount = () => {
             });
     }
 
+    function createAccount() {
+        var accountAPI = api_path + "/api/users";
+        const newAccount = {
+            username : username_created,
+            fullname : fullname_created,
+            password : password_created,
+            account_type : document.getElementById("create-account-type").value
+        }
+        axios.post(accountAPI, newAccount, { headers: { "Authorization" : `Bearer ${access_token}`} })
+        document.getElementById("create-fullname").value="";
+        document.getElementById("create-username").value="";
+        document.getElementById("create-password").value="";
+        alert("Account Created")
+    }
+
 
     return (
         <div className="container">
@@ -63,7 +78,7 @@ const CreateAccount = () => {
                     <option value={2}>2. Teacher Account</option>
                 </select>
 
-                <input type={"button"} className="big-blue-button" value={"CREATE ACCOUNT"}></input>
+                <input type={"button"} className="big-blue-button" value={"CREATE ACCOUNT"} onClick={createAccount}></input>
 
                 <table className="navigation-table">
                     <tbody>

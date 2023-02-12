@@ -15,7 +15,7 @@ const StudentLectureMenu = () => {
     var lecture_list = location.state.lecture_list;
 
     if (course.updated_at != null) {
-        var course_updated_at = course.updated_at.slice(0, 10);
+        var course_updated_at = String(new Date(course.updated_at));
     }
 
     async function viewLectureDetail(select_id) {
@@ -92,7 +92,7 @@ const StudentLectureMenu = () => {
                         </tr>
                         <tr>
                             <th>CREATED</th>
-                            <td>{course.created_at.slice(0, 10)}</td>
+                            <td>{String(new Date(course.created_at))}</td>
                         </tr>
                         <tr>
                             <th>UPDATED</th>

@@ -17,7 +17,7 @@ const StudentSessionDetail = () => {
     var api_path = location.state.api_path;
 
     if (session.updated_at != null) {
-        var session_updated_at = session.updated_at.slice(0, 10);
+        var session_updated_at = String(new Date(session.updated_at));
     }
 
     function toHomePage(e) {
@@ -90,7 +90,7 @@ const StudentSessionDetail = () => {
                         </tr>
                         <tr>
                             <th>CREATED</th>
-                            <td>{session.created_at.slice(0,10)}</td>
+                            <td>{String(new Date(session.created_at))}</td>
                         </tr>
                         <tr>
                             <th>UPDATED</th>
@@ -98,11 +98,11 @@ const StudentSessionDetail = () => {
                         </tr>
                         <tr>
                             <th>START</th>
-                            <td>{session.start.slice(0,10) + ", " + session.start.slice(11,19)+" + 00:00"}</td>
+                            <td>{String(new Date(session.start))}</td>
                         </tr>
                         <tr>
                             <th>END</th>
-                            <td>{session.end.slice(0,10) + ", " + session.end.slice(11,19)+" + 00:00"}</td>
+                            <td>{String(new Date(session.end))}</td>
                         </tr>
                     </tbody> 
                 </table>
